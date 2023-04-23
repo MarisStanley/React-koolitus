@@ -1,0 +1,70 @@
+.pilt {
+  width: 1500px;
+  height: 450px;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+  
+}
+
+.tekst {
+  font-size: 20px;
+  text-align: center;
+  color: dark;
+  margin: 500px;
+}
+
+.rectangle {
+  height: 7px;
+  width: 60px;
+  background-color: brown;
+  margin: 50px auto;
+}
+
+.navigation-pictures {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+.navigation-pictures img {
+  height: 150px;
+  width: 250px;
+  cursor: pointer;
+}
+
+.navigation-pictures img:hover {
+  scale: 1.1;
+  transition: 0.5s;
+  box-shadow: 0 8px 100px 0px #dbdcd7;
+  
+}
+
+.facebook-button img {
+  height: 30px;
+  padding: 20px 10px;
+ 
+
+}
+
+.facebook-button span {
+  position:  relative;
+  top:  -30px;
+  height: 30px;
+  color:  white;
+
+}
+
+.facebook-button:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.video {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
