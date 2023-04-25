@@ -4,10 +4,34 @@ import './App.css';
 import Avaleht from './pages/Avaleht';
 import Ostukorv from './pages/Ostukorv';
 import LisaToode from './pages/LisaToode';
+import { useState } from 'react';
 
 function App() {
+  const [logimiseTekst, uuendaLogimiseTekst] = useState('Log In');
+  const [teema, uuendaTeema] = useState('hele-leht');
+
+  const logIn = () => {
+    if (logimiseTekst === "Log In") {
+      uuendaLogimiseTekst('Log Out'); 
+    }else {
+        uuendaLogimiseTekst('Log In'); 
+
+      
+    }
+    
+  }
+
   return (
-    <div className="App">
+    <div className={teema}>  
+     {/* voin panna otse className sisse  */}
+      <button onClick={() => logIn()}>{logimiseTekst}</button>
+      {teema === "hele-leht" && <button onClick = {() => uuendaTeema("tume-leht")}>Tume leht</button>}
+      {teema === "tume-leht" &&<button onClick = {() => uuendaTeema("hele-leht")}>Hele leht</button>}
+
+
+
+  
+    
       <Link to="/">
         <img className="pilt" src="https://th.bing.com/th/id/R.53a9df467efd9e6c5cf7232d8ac2fffc?rik=z%2b%2bG33ivoz1S9w&pid=ImgRaw&r=0" alt="" />
       </Link>
@@ -36,3 +60,28 @@ function App() {
 
 export default App;
 //Routes on alguse ja lõpuga, route on isesulguv tag
+//Värvid - tumesinine -JS function, undefined, const, true, false, let,  - liigitused - neid me ei vali, ettekirjutatud.
+// HTMLis liigitus, tag, div, button, img, input, label - ka tumesinised.
+// tavaline sinine - muutuja -nii HTMLis kui ka JSis. Ise oleme loonud. useState vasakul pool.
+// helesinine - sissekirjutatud muutujad või omadused. JS local storage, sessionStorage, console JSON.
+//HTML atribuudid, ommadused, className, alt, src, onClick, path, element - helesinine.
+//kollane -HTML ja JS - funktsioonid, sulg lõpus kui võtame kasutusele
+// punased-oranzid - jutumärkides väärtused nii HTML kui JS
+// valge HTMLs väljakuvatav tekst
+// lillakad JSs on sissekirjutatud koodisõna: import, if, else, return
+// Sulud muudavad värvi olenevalt sellest, kus asuvad, ei ole tähtis.
+// Märgid 
+// {} - JS koodiblokk
+// HTMLis dünaamika ehk JS kasutusega.
+// sulgudel peab olema algus ja lõpp
+// []  useState vordusmargist vasakul pool [muutuja, funktsioon-mis-muudab-muutujat]  = useState(-algvaartus-)
+//= annan vaartust
+// === kontrollin kas vasak ja parem pool on vordsed 5-5===o luger.current.value === ""  laigitud === 
+// ! keerab vaartused tagurpidi !ture ---> false
+// > suurem  >= suurem vordne  < vaiksem <= vaiksem vordne
+// ; ei pea panema, aga on rea lopetamise tahis
+// () => tahistab funktsiooni
+// == lehel toimib, aga muidu annab errori, === vaja.
+//&& kui on eespool tode, siis naitab vaskpoolset
+// ? : kui kusimargist eespool on tode, siis tee kusimargist parem pool, kui vaar, siis koolonist parem pool.
+// "" vs '' - JSs erinevust ei ole. Kuid kui tahan kasutada sona sees jutumarke, siis peavad olema erinevad.

@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="App">
       <img className="pilt" src="https://content.wepik.com/statics/1484203/minimalist-floral-spring-twitter-header-r-887888475page1.jpg" alt="" />
-      <text className='tekst'>Welcome! This website is made for Programming and Design to show my portfolio.</text>
+      <text className='tekst'>Welcome! <br></br>This website is made for Programming and Design to show my portfolio.</text>
       
       
-      <div> className="rectangle"</div>
+      <div className="rectangle"></div>
       
 
       <div className='navigation-pictures'>

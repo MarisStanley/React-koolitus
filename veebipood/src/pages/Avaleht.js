@@ -33,13 +33,14 @@ function Avaleht() {
 
       <br /> <br />
       <div>{sonum}</div>
-      { kogus !== 0 && <button onClick={ () => uuendaKogus(0)}>Tagasi nulli</button>}
-      <button onClick={ () => uuendaKogus(kogus - 1)}>-</button>
-      <span>kogus: {kogus} tükki</span>
-      <button onClick={ () => uuendaKogus(kogus + 1)}>+</button>
+      { kogus !== 0 && <button onClick={nulli}>Tagasi nulli</button>}
+      <button onClick={ vahenda}>-</button>
+      {/* <span className={kogus >= 15 && 'kuldne'}>kogus: {kogus} tükki</span> */}
+      <span className={kogus >= 15 ? 'kuldne' : undefined}>kogus: {kogus} tükki</span>
+      <button onClick={suurenda}>+</button>
 
       <br /> <br />
-
+      {/* ? ja : ternary operator. Luhendatud if else kujuga.  if kogus on suurem kui 15, vota kasutusele tuhjus. ? on siis tõsi ja : väär*/}
       
 
 

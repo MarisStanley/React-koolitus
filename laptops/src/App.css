@@ -1,0 +1,13 @@
+to {
+  transform: rotate(360deg);
+}
+
+
+.avaleht-text {
+  color: blueviolet;
+  margin-top: 100px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+

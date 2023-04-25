@@ -10,7 +10,13 @@ function LisaToode() {
   //function lisa() {}
 
   const lisa = () => {
-    uuendaSonum("Toode lisatud, nimega: " + inputiLuger.current.value);
+    if (inputiLuger.current.value === "") {
+      uuendaSonum("Toodet ei saa tühja nimega lisada.");
+
+    } else {
+      uuendaSonum("Toode lisatud, nimega: " + inputiLuger.current.value);
+    }
+    
   }
 
   return (

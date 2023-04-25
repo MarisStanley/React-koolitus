@@ -1,6 +1,6 @@
 
 import './App.css';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom'
 import Avaleht from './pages/Avaleht';
 import Kontakt from './pages/Kontakt';
 import Meist from './pages/Meist';
@@ -24,10 +24,10 @@ function App() {
         <button>Info meist</button>
       </Link>
       <Routes>
-        <Route path="" element={ Avaleht}/> 
-        <Route path="uudised" element={ Uudised}/> 
-        <Route path="kontakt" element={ Kontakt}/> 
-        <Route path="meist" element={ Meist}/> 
+        <Route path="" element={ <Avaleht /> } />
+        <Route path="uudised" element={ <Uudised />}/> 
+        <Route path="kontakt" element={ <Kontakt />}/> 
+        <Route path="meist" element={ <Meist />}/> 
 
       </Routes>
 

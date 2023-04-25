@@ -19,3 +19,19 @@
   border: 2px dotted blue;
 }
 
+.kuldne {
+  color: goldenrod;
+}
+
+.tume-leht {
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  /* vh minimaalne ekraani kõrgus, vw -laius */
+
+}
+
+.hele-leht {
+  background-color: rgb(238, 238, 234);
+  min-height: 100vh;
+}
