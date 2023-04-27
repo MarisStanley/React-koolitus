@@ -5,10 +5,13 @@ import Avaleht from './pages/Avaleht';
 import Ostukorv from './pages/Ostukorv';
 import LisaToode from './pages/LisaToode';
 import { useState } from 'react';
+import Seaded from './pages/Seaded';
+import Meist from './pages/Meist';
 
 function App() {
   const [logimiseTekst, uuendaLogimiseTekst] = useState('Log In');
-  const [teema, uuendaTeema] = useState('hele-leht');
+  const [teema, uuendaTeema] = useState(localStorage.getItem("theme") || "hele-leht");
+  // kui tuleb null ehk tuhjus || vota parem pool
 
   const logIn = () => {
     if (logimiseTekst === "Log In") {
@@ -20,13 +23,22 @@ function App() {
     }
     
   }
+  const muudaTumedaks = () => {
+    uuendaTeema("tume-leht")
+    localStorage.setItem("theme", "tume-leht");
+    
+  }
+  const muudaHeledaks = () => {
+    uuendaTeema("hele-leht")
+    localStorage.setItem("theme", "hele-leht");
+  }
 
   return (
     <div className={teema}>  
      {/* voin panna otse className sisse  */}
       <button onClick={() => logIn()}>{logimiseTekst}</button>
-      {teema === "hele-leht" && <button onClick = {() => uuendaTeema("tume-leht")}>Tume leht</button>}
-      {teema === "tume-leht" &&<button onClick = {() => uuendaTeema("hele-leht")}>Hele leht</button>}
+      {teema === "hele-leht" && <button onClick = {muudaTumedaks}>Tume leht</button>}
+      {teema === "tume-leht" &&<button onClick = {muudaHeledaks}>Hele leht</button>}
 
 
 
@@ -40,6 +52,13 @@ function App() {
         <button className="nupp">Lisa toode</button>
       </Link>
 
+      <Link to="/meist">
+        <button className="nupp">Meist</button>
+      </Link>
+
+      <Link to="/seaded">
+        <button className="nupp">Seaded</button>
+      </Link>
       <Link to="/ostukorv">
         <button className="nupp">Ostukorv</button>
       </Link>
@@ -48,6 +67,8 @@ function App() {
        <Routes>
         <Route path="" element={ <Avaleht />}/> 
         <Route path="lisa-toode" element={<LisaToode />}/>  
+        <Route path="meist" element={<Meist />}/>   
+        <Route path="seaded" element={<Seaded />}/>   
         <Route path="ostukorv" element={<Ostukorv />}/>   
         
 
@@ -85,3 +106,5 @@ export default App;
 //&& kui on eespool tode, siis naitab vaskpoolset
 // ? : kui kusimargist eespool on tode, siis tee kusimargist parem pool, kui vaar, siis koolonist parem pool.
 // "" vs '' - JSs erinevust ei ole. Kuid kui tahan kasutada sona sees jutumarke, siis peavad olema erinevad.
+
+// kaks kohta errorite vaatamiseks  terminal -runtime errors. parem klõps - inspect- console - run-time error
