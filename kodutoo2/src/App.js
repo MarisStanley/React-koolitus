@@ -5,6 +5,7 @@ import Avaleht from './pages/Avaleht';
 import Meist from './pages/Meist';
 import Kontakt from './pages/Kontakt';
 import Seaded from './pages/Seaded';
+import Loader from './pages/Loader';
 import {useRef, useState} from 'react';
 
 function App() {
@@ -56,6 +57,9 @@ const logiValja = () => {
       <Link to="/seaded">
         <button>Mingid seaded</button>
       </Link> 
+      <Link to="/loader">
+        <button>Loader</button>
+      </Link> 
 
 
 
@@ -65,6 +69,7 @@ const logiValja = () => {
         <Route path="/meist" element={<Meist/>}/>
         <Route path="/kontakt" element={<Kontakt/>}/>
         <Route path="/seaded" element={<Seaded/>}/>
+        <Route path="/loader" element={<Loader/>}/>
         
       </Routes>
       
