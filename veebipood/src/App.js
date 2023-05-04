@@ -7,6 +7,9 @@ import LisaToode from './pages/LisaToode';
 import { useState } from 'react';
 import Seaded from './pages/Seaded';
 import Meist from './pages/Meist';
+import Tootajad from './pages/Tootajad';
+import Poed from './pages/Poed';
+import Hinnad from './pages/Hinnad';
 
 function App() {
   const [logimiseTekst, uuendaLogimiseTekst] = useState('Log In');
@@ -62,6 +65,15 @@ function App() {
       <Link to="/ostukorv">
         <button className="nupp">Ostukorv</button>
       </Link>
+      <Link to="/tootajad">
+        <button className="nupp">Tootajad</button>
+      </Link>
+      <Link to="/poed">
+        <button className="nupp">Poed</button>
+      </Link>
+      <Link to="/hinnad">
+        <button className="nupp">Hinnad</button>
+      </Link>
 
       {/* telia.ee    <div></div>  */}
        <Routes>
@@ -70,6 +82,9 @@ function App() {
         <Route path="meist" element={<Meist />}/>   
         <Route path="seaded" element={<Seaded />}/>   
         <Route path="ostukorv" element={<Ostukorv />}/>   
+        <Route path="tootajad" element={<Tootajad />}/>  
+        <Route path="poed" element={<Poed />}/> 
+        <Route path="hinnad" element={<Hinnad />}/>      
         
 
 
