@@ -22,6 +22,11 @@ function Tootajad() {
         uuendaKogusumma(summa);
     }
 
+    const kustuta = (i)  =>  {
+        tootajad.splice(i,1);
+        uuendaTootajad(tootajad.slice());
+    }
+
   return (
     <div>
         <div>Koik tahed kokku: {koguSumma}tk  </div>
@@ -29,7 +34,7 @@ function Tootajad() {
         <br />
         <button onClick={sorteeriAZ}>Sorteeri A-Z</button>
         <button onClick={filtreeriKellelOnRohkemKui12Tahte}>Filtreeri</button>
-        { tootajad.map(e => <div>{e} </div>)}
+        { tootajad.map((e, i) => <div>{e} <button onClick={() => kustuta(i)}>x</button></div>)}
     </div>
   )
 }

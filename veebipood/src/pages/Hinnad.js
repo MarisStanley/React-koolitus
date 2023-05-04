@@ -16,6 +16,11 @@ function Hinnad() {
     uuendaHinnad(vastus);
   }
 
+  const kustuta = (i)  =>  {
+    hinnad.splice(i,1);
+    uuendaHinnad(hinnad.slice());
+}
+
 
   const arvutaKoikKokku = () => {
     let summa = 0;
@@ -29,7 +34,7 @@ function Hinnad() {
       
       <button onClick={sorteeriKasvavalt}>Sorteeri kasvavalt</button>
       <button onClick={filtreeriVaiksemKui100}>Jata alles vaiksemad kui 100</button>
-      { hinnad.map(el => <div>{el}</div>)}
+      { hinnad.map((el,ix) => <div>{el} <button onClick={() => kustuta(ix)}>x</button></div>)}
     </div>
   )
 }

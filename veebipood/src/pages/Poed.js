@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
+import poedFailist from "../data/poed.json";
 
 function Poed() {
-  const [poed, uuendaPoed] = useState(["Ülemiste", "Viimsi", "Rocca Al Mare", "Magistrali", "Vesse", "Kristiine", "Järveotsa"])
-  
+  const [poed, uuendaPoed] = useState(poedFailist);
+
+  const tagasi = () => {
+    uuendaPoed(poedFailist);
+  }  
 
 const sorteeriAZ = () => {
   poed.sort((a,b) => a.localeCompare(b)); //saab teha ka defaulti
@@ -49,11 +53,17 @@ const sorteeriKolmasTahtAZ = () => {
     uuendaPoed(vastus);
   }
   
-
+  const kustuta = (jrknr)  =>  {
+    poed.splice(jrknr,1);
+    uuendaPoed(poed.slice());
+}
 
   return (
     <div>
       <br />
+      <button onClick={tagasi}>Reseti filtrid</button>
+      <dir>Poode on: {poed.length} tk</dir>
+      <br /><br />
       <button onClick={sorteeriAZ}>Sorteeri A-Z</button>
       <button onClick={sorteeriZA}>Sorteeri Z-A</button>
       <button onClick={sorteeriTahedKasv}>Sorteeri tähtede arv kasvavalt</button>
@@ -65,7 +75,8 @@ const sorteeriKolmasTahtAZ = () => {
       <button onClick={filtreeriSisaldabIsLyhendit}>Filtreeri</button>
       
       
-      {poed.map(yksPood => <div>{yksPood}</div>)} 
+      {poed.map((yksPood, jrknr) => <div>{yksPood} <button onClick={()=> kustuta(jrknr)}>x</button></div>)} 
+
       </div>
   )
 }

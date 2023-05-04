@@ -10,6 +10,9 @@ import Meist from './pages/Meist';
 import Tootajad from './pages/Tootajad';
 import Poed from './pages/Poed';
 import Hinnad from './pages/Hinnad';
+import Tooted from './pages/Tooted';
+import HaldaTooted from './pages/HaldaTooted';
+
 
 function App() {
   const [logimiseTekst, uuendaLogimiseTekst] = useState('Log In');
@@ -74,6 +77,12 @@ function App() {
       <Link to="/hinnad">
         <button className="nupp">Hinnad</button>
       </Link>
+      <Link to="/tooted">
+        <button className="nupp">Tooted</button>
+      </Link>
+      <Link to="/halda">
+        <button className="nupp">Halda tooted</button>
+      </Link>
 
       {/* telia.ee    <div></div>  */}
        <Routes>
@@ -84,7 +93,9 @@ function App() {
         <Route path="ostukorv" element={<Ostukorv />}/>   
         <Route path="tootajad" element={<Tootajad />}/>  
         <Route path="poed" element={<Poed />}/> 
-        <Route path="hinnad" element={<Hinnad />}/>      
+        <Route path="hinnad" element={<Hinnad />}/>  
+        <Route path="tooted" element={<Tooted />}/>  
+        <Route path="halda" element={<HaldaTooted />}/>      
         
 
 
