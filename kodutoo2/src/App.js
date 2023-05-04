@@ -6,6 +6,8 @@ import Meist from './pages/Meist';
 import Kontakt from './pages/Kontakt';
 import Seaded from './pages/Seaded';
 import Loader from './pages/Loader';
+import Books from './pages/Books';
+import Numbrid from './pages/Numbrid';
 import {useRef, useState} from 'react';
 
 function App() {
@@ -34,7 +36,7 @@ const logiValja = () => {
  
     <div className='App'>
       <div>{sonum}</div>
-
+   
     <div> 
       <label>Kasutajanimi</label>
       <input ref={kasutajaNimiRef} type="text" /><br></br>
@@ -60,6 +62,12 @@ const logiValja = () => {
       <Link to="/loader">
         <button>Loader</button>
       </Link> 
+      <Link to="/books">
+        <button>Books</button>
+      </Link> 
+      <Link to="/numbrid">
+        <button>Numbrid</button>
+      </Link> 
 
 
 
@@ -70,8 +78,12 @@ const logiValja = () => {
         <Route path="/kontakt" element={<Kontakt/>}/>
         <Route path="/seaded" element={<Seaded/>}/>
         <Route path="/loader" element={<Loader/>}/>
+        <Route path="/books" element={<Books/>}/>
+        <Route path="/numbrid" element={<Numbrid/>}/>
         
       </Routes>
+
+     
       
    
     </div>
