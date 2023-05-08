@@ -4,6 +4,10 @@ import tootedFailist from "../data/tooted.json";
 function LisaToode() {
   const [sonum, uuendaSonum]  = useState("Lisa toode!");
   const inputiLuger = useRef();  
+  const hindViide = useRef();
+  const piltViide = useRef();
+  const aktiivneViide = useRef();
+  
 
 //ref loeb inputi sees väärtusi. const nimiRef ´useRef()
 // const nimiViide = useRef();  Panen üksõik millise nimetuse (nimiViide)
@@ -16,7 +20,14 @@ function LisaToode() {
 
     } else {
       uuendaSonum("Toode lisatud, nimega: " + inputiLuger.current.value);
-      tootedFailist.push(inputiLuger.current.value);
+
+      const uusToode = {
+        "nimi": inputiLuger.current.value, 
+        "hind": Number(hindViide.current.value), 
+        "aktiivne": aktiivneViide.current.checked, 
+        "pilt": piltViide.current.value
+      }
+      tootedFailist.push(uusToode);
     }
     
   }
@@ -24,8 +35,14 @@ function LisaToode() {
   return (
     <div>
       <div>{sonum}</div>
-      <label htmlFor="Uue toote nimi"></label>
-      <input ref={inputiLuger} type="text" />"
+      <label> Uue toote nimi</label>
+      <input ref={inputiLuger} type="text" /> <br />
+      <label> Uue toote hind</label>
+      <input ref={hindViide} type="number" /> <br />
+      <label> Uue toote pilt</label>
+      <input ref={piltViide} type="text" /> <br />
+      <label> Uue toote aktiivsus</label>
+      <input ref={aktiivneViide} type="checkbox" /> <br />
       <button onClick={lisa}>Lisa</button>
     </div>
   )

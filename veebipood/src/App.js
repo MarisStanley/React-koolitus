@@ -12,6 +12,8 @@ import Poed from './pages/Poed';
 import Hinnad from './pages/Hinnad';
 import Tooted from './pages/Tooted';
 import HaldaTooted from './pages/HaldaTooted';
+import YksikToode from './pages/YksikToode';
+import MuudaToode from './pages/MuudaToode';
 
 
 function App() {
@@ -83,6 +85,12 @@ function App() {
       <Link to="/halda">
         <button className="nupp">Halda tooted</button>
       </Link>
+      <Link to="/yksikToode">
+        <button className="nupp">Yksik toode</button>
+      </Link>
+      <Link to="/muudaToode">
+        <button className="nupp">Muuda toode</button>
+      </Link>
 
       {/* telia.ee    <div></div>  */}
        <Routes>
@@ -95,7 +103,9 @@ function App() {
         <Route path="poed" element={<Poed />}/> 
         <Route path="hinnad" element={<Hinnad />}/>  
         <Route path="tooted" element={<Tooted />}/>  
-        <Route path="halda" element={<HaldaTooted />}/>      
+        <Route path="halda" element={<HaldaTooted />}/>    
+        <Route path="toode/:index" element={<YksikToode />}/>  
+        <Route path="muuda/:jrknr" element={<MuudaToode />}/>  
         
 
 
