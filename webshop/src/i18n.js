@@ -32,7 +32,35 @@ const resources = {
      "maintain-products": "Halda tooteid",
          
     }
-  }
+  },
+
+  pl: {
+    translation: {
+     "admin": "Admin",
+     "contact": "Kontakt",
+     "shops": "Sklepy",
+     "cart": "Kozyk",
+     "maintain-categories": "Utrzymywać kategorie",
+     "maintain-shops": "Utrzymywać sklepy",
+     "add-product": "Dodaj produkt",
+     "maintain-products": "Konserwować produkty",
+         
+    }
+  },
+
+  no: {
+    translation: {
+     "admin": "Admin",
+     "contact": "Kontakt",
+     "shops": "Butikker",
+     "cart": "Handlekurven",
+     "maintain-categories": "Opprettholde kategorier",
+     "maintain-shops": "Vedlikeholde butikker",
+     "add-product": "Legg til produkt",
+     "maintain-products": "Vedlikeholde produkter",
+         
+    }
+  },
 };
 
 i18n

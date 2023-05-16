@@ -34,6 +34,19 @@ function App() {
     
   }
 
+  const languageToPl = () => {
+    i18n.changeLanguage("pl");
+    localStorage.setItem("language", "pl")
+    
+  }
+
+  const languageToNo = () => {
+    i18n.changeLanguage("no");
+    localStorage.setItem("language", "no")
+    
+  }
+
+
 
 
   return (
@@ -54,6 +67,8 @@ function App() {
           <Nav>
             <img className='lang' src="/english.png" onClick={languageToEn} alt="" />
             <img className='lang' src="/estonia.png" onClick={languageToEe} alt="" />
+            <img className='lang' src="/poland.png" onClick={languageToPl} alt="" />
+            <img className='lang' src="/norway.png" onClick={languageToNo} alt="" />
             
             <Nav.Link  as={Link}  to="/cart">{t("cart")}</Nav.Link>
             
@@ -62,6 +77,8 @@ function App() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+
+  
 
       <Routes>
         <Route path=""   element={ <HomePage/> } />
