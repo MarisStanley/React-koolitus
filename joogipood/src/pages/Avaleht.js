@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import joogidFailist from "../data/joogid.json";
 
 function Avaleht() {
@@ -11,6 +12,15 @@ function Avaleht() {
   return (
     <div>
         {joogid.map((el, index) => <div>{el} <button onClick={() => kustuta(index)}>x</button></div>)}
+
+        Joogid:
+        {joogid.map((el,index) =>
+       <div>
+        <Link to={"/jook/" + index}>
+          <span>{el}</span>
+        </Link>
+        
+         </div>)}
     </div>
   )
 }
