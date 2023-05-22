@@ -4,7 +4,7 @@ import './App.css';
 import HomePage from './pages/global/HomePage';
 import Cart from './pages/global/Cart';
 import Shops from './pages/global/Shops';
-import ContactUs from './pages/global/ContactUs';
+import {ContactUs} from './pages/global/ContactUs';
 import SingleProduct from './pages/global/SingleProduct';
 import AdminHome from './pages/admin/AdminHome';
 import AddProduct from './pages/admin/AddProduct';
@@ -18,6 +18,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useTranslation } from 'react-i18next';
+
+
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -56,7 +58,7 @@ function App() {
 
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Container>
-        <Navbar.Brand href="#home">Maris's Shop</Navbar.Brand>
+        <Navbar.Brand href="/">  Maris's Shop </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -85,7 +87,7 @@ function App() {
         <Route path="cart"   element={ <Cart/> } />
         <Route path="shops"   element={ <Shops /> } />
         <Route path="contact"   element={ <ContactUs /> } />
-        <Route path="product"   element={ <SingleProduct /> } />
+        <Route path="product/:id" element={<SingleProduct />} />
         <Route path="admin"   element={ <AdminHome /> } />
         <Route path="admin/add-product"   element={ <AddProduct/> } />
         <Route path="admin/edit-product/:id"   element={ <EditProduct /> } />
@@ -94,18 +96,7 @@ function App() {
         <Route path="admin/maintain-shops"   element={ <MaintainShops /> } />
         <Route path="login"   element={ <Login /> } />
         <Route path="signup"   element={ <Signup /> } />
-        
-
-
-
-
-
-
-
-
-
-
-      </Routes>
+        </Routes>
     </div>
   );
 }
