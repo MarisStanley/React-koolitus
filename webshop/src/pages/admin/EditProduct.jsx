@@ -22,6 +22,18 @@ function EditProduct() {
   const [idUnique, setIdUnique] = useState(true);
 
   const changeProduct = () => {
+    if (idRef.current.value === "") {
+      return;
+    }
+    if (nameRef.current.value === "") {
+      return;
+    }
+    if (priceRef.current.value === "") {
+      return;
+    }
+    if (Number(priceRef.current.value) <= 0) {
+      return;
+    }
     const updatedProduct = {
       "id": Number(idRef.current.value),
       "name": nameRef.current.value,
@@ -59,6 +71,11 @@ function EditProduct() {
 // }
 
      const checkIdUniqueness = () => {
+      if (idRef.current.value === id) { //sisestatud id on sama,mis URList id
+        setIdUnique(true) // thumbs up
+        return; //ära edasi siit mine
+      }
+
        const index = productsFromFile.find(element => element.id === Number(idRef.current.value));
        if (index === -1) {
        setIdUnique(true)

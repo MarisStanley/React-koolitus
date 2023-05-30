@@ -1,16 +1,28 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import tootedFailist from "../data/tooted.json"
 import ostukorvFailist from "../data/ostukorv.json"
 import { Link } from "react-router-dom";
 
 
+
 function Tooted() {
   const [tooted, uuendaTooted] = useState(tootedFailist);
 
-  const lisa = (element) => {
-    ostukorvFailist.push(element);
-    uuendaTooted(tootedFailist.slice());
-  }
+  // const lisa = (element) => {
+  //   ostukorvFailist.push(element);
+  //   uuendaTooted(tootedFailist.slice());
+  // }
+  const lisa = (klikitudToode) => {
+    console.log(klikitudToode);
+    const index = ostukorvFailist.findIndex(element => element.product === klikitudToode);
+    if (index >= 0) {
+      ostukorvFailist[index].quantity++;
+
+    } else {
+      ostukorvFailist.push({"product":klikitudToode, "quantity": 1});
+
+    }}
+
 
   const sorteeriAZ = () => {
     tooted.sort((a,b) => a.nimi.localeCompare(b.nimi));
@@ -58,17 +70,18 @@ function Tooted() {
         <button onClick={filtreeriN}>N</button>
         <button onClick={filtreeriT}>T</button>
         <br />
-      {tooted.map((element, index) => 
-       <div> 
+      {tooted.map((toode, index )=> (
+       <div key={index}> 
         <Link to={"/toode/" + index}>
-        <img className="pilt" src={element.pilt} alt="" />
-        {element.nimi} {element.hind} €
+        <img className="pilt" src={toode.pilt} alt="" />
+        {toode.nimi} {toode.hind} €
         
         </Link>
-        <button onClick={() => lisa(element)}>Lisa ostukorvi</button>
-       </div>)}
+        <button onClick={() => lisa(toode)}>Lisa ostukorvi</button>
+       </div>))}
     </div>
   )
 }
+
 
 export default Tooted

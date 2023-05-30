@@ -1,8 +1,38 @@
 [
-    {"nimi": "Nobe", "hind": 30000, "aktiivne": true, "pilt": "https://i.pinimg.com/originals/1c/a6/91/1ca6911c7c8933ecc74c84a91e88ac30.jpg"}, 
-    {"nimi":"Tesla", "hind": 60000, "aktiivne": false, "pilt": "https://static3.hotcarsimages.com/wordpress/wp-content/uploads/2021/01/Tesla-Roadster-1.jpg"}, 
-    {"nimi":"BMW", "hind": 40000, "aktiivne": true, "pilt": "https://4.bp.blogspot.com/-Lt1uTAfbyqo/U6xCgnXcWFI/AAAAAAAACXg/Y0e94xvOTo8/s1600/funadress+BMW+3.jpg"},
-    {"nimi": "Nissan", "hind": 30000, "aktiivne": true, "pilt": "https://i.pinimg.com/originals/1c/a6/91/1ca6911c7c8933ecc74c84a91e88ac30.jpg"}, 
-    {"nimi":"Toyota", "hind": 60000, "aktiivne": false, "pilt": "https://static3.hotcarsimages.com/wordpress/wp-content/uploads/2021/01/Tesla-Roadster-1.jpg"}, 
-    {"nimi":"Bentley", "hind": 40000, "aktiivne": true, "pilt": "https://4.bp.blogspot.com/-Lt1uTAfbyqo/U6xCgnXcWFI/AAAAAAAACXg/Y0e94xvOTo8/s1600/funadress+BMW+3.jpg"}
+    {
+        "nimi": "Nobe",
+        "hind": 30000,
+        "aktiivne": true,
+        "pilt": "https://i.pinimg.com/originals/1c/a6/91/1ca6911c7c8933ecc74c84a91e88ac30.jpg"
+    },
+    {
+        "nimi": "Tesla",
+        "hind": 60000,
+        "aktiivne": false,
+        "pilt": "https://static3.hotcarsimages.com/wordpress/wp-content/uploads/2021/01/Tesla-Roadster-1.jpg"
+    },
+    {
+        "nimi": "BMW",
+        "hind": 40000,
+        "aktiivne": true,
+        "pilt": "https://4.bp.blogspot.com/-Lt1uTAfbyqo/U6xCgnXcWFI/AAAAAAAACXg/Y0e94xvOTo8/s1600/funadress+BMW+3.jpg"
+    },
+    {
+        "nimi": "Nissan",
+        "hind": 30000,
+        "aktiivne": true,
+        "pilt": "https://i.pinimg.com/originals/1c/a6/91/1ca6911c7c8933ecc74c84a91e88ac30.jpg"
+    },
+    {
+        "nimi": "Toyota",
+        "hind": 60000,
+        "aktiivne": false,
+        "pilt": "https://static3.hotcarsimages.com/wordpress/wp-content/uploads/2021/01/Tesla-Roadster-1.jpg"
+    },
+    {
+        "nimi": "Bentley",
+        "hind": 40000,
+        "aktiivne": true,
+        "pilt": "https://4.bp.blogspot.com/-Lt1uTAfbyqo/U6xCgnXcWFI/AAAAAAAACXg/Y0e94xvOTo8/s1600/funadress+BMW+3.jpg"
+    }
 ]

@@ -6,6 +6,7 @@ import Tagasiside from './pages/Tagasiside';
 import TagasisideAndjad from './pages/TagasisideAndjad';
 import Nimed from './pages/Nimed';
 import Tegevused from './pages/Tegevused';
+import Kasutajad from './pages/Kasutajad';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
       <Link to="/tegevused">
         <button>Tegevused</button>
       </Link>
+      <Link to="/kasutajad">
+        <button>Kasutajad</button>
+      </Link>
 
       
 
@@ -37,6 +41,7 @@ function App() {
         <Route path="/tagasisideandjad" element={<TagasisideAndjad/>}/>
         <Route path="/nimed" element={<Nimed/>}/>
         <Route path="/tegevused" element={<Tegevused/>}/>
+        <Route path="/kasutajad" element={<Kasutajad/>}/>
  
 
       </Routes>

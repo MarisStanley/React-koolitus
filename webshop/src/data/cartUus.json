@@ -1,0 +1,26 @@
+[
+    {
+        "kogus": 5,
+        "toode": {
+            "id": 35422021,
+            "image": "https://ir.ebaystatic.com/rs/v/fxxj3ttftm5ltcqnto1o4baovyl.png",
+            "name": "Shop on eBay",
+            "price": 20,
+            "description": "Shop on eBay",
+            "category": "motorcycle",
+            "active": true
+        }
+    },
+    {
+        "kogus": 2,
+        "toode": {
+            "id": 21999552,
+            "image": "https://i.ebayimg.com/thumbs/images/g/UrkAAOSwHWNje7zj/s-l225.webp",
+            "name": "New Listing1978 Harley-Davidson",
+            "price": 8100,
+            "description": "New Listing1978 Harley-Davidson shovelhead ",
+            "category": "motorcycle",
+            "active": true
+        }
+    }
+]

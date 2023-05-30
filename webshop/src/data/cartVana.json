@@ -1,0 +1,20 @@
+[
+   { 
+    "id": 35422021,
+    "image": "https://ir.ebaystatic.com/rs/v/fxxj3ttftm5ltcqnto1o4baovyl.png",
+    "name": "Shop on eBay",
+    "price": 20,
+    "description": "Shop on eBay",
+    "category": "motorcycle",
+    "active": true
+},
+{
+    "id": 13505234,
+    "image": "https://i.ebayimg.com/thumbs/images/g/oqwAAOSwsRxjexU7/s-l225.webp",
+    "name": "1980 Harley-Davidson Street",
+    "price": 2500,
+    "description": "1980 Harley-Davidson Street ",
+    "category": "motorcycle",
+    "active": true
+}
+]

@@ -17,37 +17,42 @@ import Signup from './pages/auth/Signup';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { useTranslation } from 'react-i18next';
+import {  useTranslation , i18n} from 'react-i18next';
+import { changeLanguage } from 'i18next';
 
 
 
 function App() {
   const { t, i18n } = useTranslation();
+  
 
-  const languageToEn = () => {
-    i18n.changeLanguage("en");
-    localStorage.setItem("language", "en")
+  // const languageToEn = () => {
+  //   i18n.changeLanguage("en");
+  //   localStorage.setItem("language", "en")
 
-  }
+  // }
 
-  const languageToEe = () => {
-    i18n.changeLanguage("ee");
-    localStorage.setItem("language", "ee")
+  // const languageToEe = () => {
+  //   i18n.changeLanguage("ee");
+  //   localStorage.setItem("language", "ee")
     
-  }
+  // }
 
-  const languageToPl = () => {
-    i18n.changeLanguage("pl");
-    localStorage.setItem("language", "pl")
+  // const languageToPl = () => {
+  //   i18n.changeLanguage("pl");
+  //   localStorage.setItem("language", "pl")
     
-  }
+  // }
 
-  const languageToNo = () => {
-    i18n.changeLanguage("no");
-    localStorage.setItem("language", "no")
+  // const languageToNo = () => {
+  //   i18n.changeLanguage("no");
+  //   localStorage.setItem("language", "no")
     
-  }
-
+  // }
+  const languageTo = (languageClicked) => {
+    i18n.changeLanguage(languageClicked);
+    localStorage.setItem("language", languageClicked);
+  };
 
 
 
@@ -58,7 +63,7 @@ function App() {
 
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Container>
-        <Navbar.Brand href="/">  Maris's Shop </Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">  Maris's Shop </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -67,10 +72,15 @@ function App() {
             <Nav.Link as={Link}  to="/shops">{t("shops")}</Nav.Link>
           </Nav>
           <Nav>
-            <img className='lang' src="/english.png" onClick={languageToEn} alt="" />
+            {/* <img className='lang' src="/english.png" onClick={languageToEn} alt="" />
             <img className='lang' src="/estonia.png" onClick={languageToEe} alt="" />
             <img className='lang' src="/poland.png" onClick={languageToPl} alt="" />
             <img className='lang' src="/norway.png" onClick={languageToNo} alt="" />
+             */}
+             <img className='lang' src="/english.png" onClick={() => languageTo("en")} alt="" />
+            <img className='lang' src="/estonia.png" onClick={() => languageTo("ee")} alt="" />
+            <img className='lang' src="/poland.png" onClick={() => languageTo("pl")} alt="" />
+            <img className='lang' src="/norway.png" onClick={() => languageTo("no")} alt="" />
             
             <Nav.Link  as={Link}  to="/cart">{t("cart")}</Nav.Link>
             
