@@ -16,7 +16,8 @@ function MaintainProducts() {
   }
 
   const searchFromProducts = () => {
-    const result = productsFromFile.filter(element => element.name.includes(searchedRef.current.value))
+    const result = productsFromFile.filter(element => 
+      element.name.includes(searchedRef.current.value))
     setProducts(result);
 
   }
