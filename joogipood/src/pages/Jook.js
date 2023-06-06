@@ -2,7 +2,9 @@ import { useParams } from 'react-router-dom'
 import React from 'react'
 import joogidFailist from '../data/joogid.json'
 
+
 function Jook() {
+
     const { number } = useParams();
     const leitud = joogidFailist[number];
   return (

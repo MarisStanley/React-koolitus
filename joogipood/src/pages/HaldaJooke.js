@@ -1,13 +1,23 @@
-import React, {useState} from 'react'
-import joogidFailist from "../data/joogid.json";
+import React, {useEffect, useState} from 'react'
+// import joogidFailist from "../data/joogid.json";
+import config from "../../src/data/config.json"
 
 function HaldaJooke() {
    
-    const [joogid, uuendaJoogid] = useState(joogidFailist);
+    const [joogid, uuendaJoogid] = useState([]);
+
+    useEffect(() => {
+      fetch(config.joogidDbUrl)
+      .then(res => res.json())
+      .then(json => uuendaJoogid(json || []));
+      
+    }, []);
 
     const kustuta = (index) => {
-        joogidFailist.splice(index, 1);
-        uuendaJoogid(joogidFailist.slice());
+        joogid.splice(index, 1);
+        uuendaJoogid(joogid.slice());
+        fetch(config.joogidDbUrl,
+          {"method": "PUT", "body": JSON.stringify(joogid)});
     }
 
   
@@ -18,7 +28,7 @@ function HaldaJooke() {
     
     <br />
 
-    {joogid.map((el, index) => <div>{el}<button onClick={() => kustuta(index)}>x</button></div>)}
+    {joogid.map((el, index) => <div>{el.nimi}<button onClick={() => kustuta(index)}>x</button></div>)}
 
     </div>
   )

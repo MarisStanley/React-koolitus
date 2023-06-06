@@ -17,7 +17,7 @@ function App() {
       <Link to="/ValitudTegelased">
         <button>Valitud Tegelased</button>
       </Link> 
-
+     
 
 <Routes>
         <Route path="/" element={<Avaleht/>}/>

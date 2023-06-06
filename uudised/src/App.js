@@ -8,7 +8,9 @@ import Uudised from './pages/Uudised';
 import LisaUudis from './pages/LisaUudis';
 import HaldaUudiseid from './pages/HaldaUudiseid';
 import YksUudis from './pages/YksUudis';
+import YksPostitus from './pages/YksPostitus';
 import MuudaUudis from './pages/MuudaUudis';
+import KasutajaPostitus from './pages/KasutajaPostitus';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useTranslation } from 'react-i18next';
@@ -44,6 +46,8 @@ function App() {
           <Nav.Link as={Link}  to="halda-uudiseid">{t("uudiseid-haldama")} </Nav.Link>
           <Nav.Link as={Link}  to="uudis">{t("yks-uudis")} </Nav.Link>  
           <Nav.Link as={Link}  to="muuda">{t("muuda-uudis")} </Nav.Link>  
+          <Nav.Link as={Link}  to="kasutaja">{t("kasutaja-postitus")} </Nav.Link>
+          <Nav.Link as={Link}  to="postitus">{t("yks-postitus")} </Nav.Link>  
           </Nav>
       
       
@@ -66,6 +70,8 @@ function App() {
         <Route path="halda-uudiseid" element={ <HaldaUudiseid />}/> 
         <Route path="uudis/:index" element={ <YksUudis />}/> 
         <Route path="muuda/:index" element={ <MuudaUudis />}/> 
+        <Route path="kasutaja/:kasutajaId" element={ <KasutajaPostitus />}/> 
+        <Route path="postitus/:postituseId" element={ <YksPostitus />}/> 
 
       </Routes>
 
