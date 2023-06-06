@@ -1,26 +1,53 @@
-import React, { useRef, useState } from 'react'
-import productsFromFile from "../../data/products.json";
+import React, { useEffect, useRef, useState } from 'react'
+//import productsFromFile from "../../data/products.json";
 import Button from 'react-bootstrap/esm/Button';
 import { Link } from 'react-router-dom';
 import { t } from 'i18next';
 import "../../css/MaintainProducts.css";
+import config from "../../data/config.json"
 
 function MaintainProducts() {
-  const [products, setProducts] = useState(productsFromFile);
+  const [products, setProducts] = useState([]); //koikuv suurus -> 
+  //palju otsingus valja tuleb. Ainult valja naitamiseks. Andmebaasi ei saada.
+  const [dbProducts, setDbProducts] =useState([]) //alati sama palju kui andmebaasis.Votan tema seast ara, saadan andmebaasi. Otsing.
   const searchedRef = useRef();
+  const [loading, setLoading] = useState(true)
 
-  const deleteProduct = (index) => {
-    productsFromFile.splice(index, 1);
-    setProducts(productsFromFile.slice());
+  useEffect(() => {
+
+    fetch(config.productsDbUrl)
+    .then(res => res.json())
+    .then(json => { 
+      setProducts(json || []);
+      setDbProducts(json || []);
+      setLoading(false) 
+    });
+
+    
+  }, []);
+
+  const deleteProduct = (product) => {
+    const index = dbProducts.findIndex(element => element.id === product.id);
+    dbProducts.splice(index, 1);
+    setDbProducts(dbProducts.slice());
+    //setProducts(dbProducts.slice());
+    searchFromProducts();
+    fetch(config.productsDbUrl, {"method": "PUT", "body": JSON.stringify(dbProducts)})
 
   }
 
   const searchFromProducts = () => {
-    const result = productsFromFile.filter(element => 
-      element.name.includes(searchedRef.current.value))
+    const result = dbProducts.filter(element => 
+      element.name.toLowerCase().replace("õ", "o")
+      .includes(searchedRef.current.value.toLowerCase().replace("õ", "o")))
     setProducts(result);
 
   }
+
+  if (loading === true) {
+    return <div>Loading...</div>
+  }
+
 
   return (
     <div>
@@ -51,7 +78,7 @@ function MaintainProducts() {
 
 
               <td>
-                <Button onClick={() => deleteProduct(index)} variant='danger'>{t('delete')}</Button>
+                <Button onClick={() => deleteProduct(product)} variant='danger'>{t('delete')}</Button>
                 <Button as={Link} to={'/admin/edit-product/' + product.id} variant='warning'>{t('edit')}</Button>
               </td>
             </tr>

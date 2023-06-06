@@ -9,7 +9,8 @@ function Cart() {
   const { t } = useTranslation();
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
   //const [cart, setCart] = useState(cartFromFile);
-  const [parcelMachines, setParchelMachines] = useState([]);
+  const [parcelMachines, setParchelMachines] = useState([]); //koikuv
+  const [dbparcelMachines, setDbParchelMachines] = useState([]); //koguaeg uks ja sama
   //input
   const searchedRef = useRef();
 
@@ -17,7 +18,10 @@ function Cart() {
   useEffect(() => {
     fetch("https://www.omniva.ee/locations.json")
     .then(response => response.json())  // kogu tagastus. API päring
-    .then(json => setParchelMachines(json))   //võetakse sisu ja pannakse automaati
+    .then(json => {
+      setParchelMachines(json || []);
+      setDbParchelMachines(json || []);
+    })   //võetakse sisu ja pannakse automaati
   }, []);
 
 
@@ -68,7 +72,7 @@ function Cart() {
 
   //onChange
   const searchFromPMs = () => {
-    const result = parcelMachines.filter(pm =>
+    const result = dbparcelMachines.filter(pm =>
       pm.NAME.toLowerCase().replace("õ", "o")
         .includes(searchedRef.current.value.toLowerCase().replace("õ", "o")));
     setParchelMachines(result)

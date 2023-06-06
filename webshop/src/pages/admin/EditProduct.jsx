@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import productsFromFile from '../../data/products.json';
+//import productsFromFile from '../../data/products.json';
 import { useRef } from 'react';
 import Button from 'react-bootstrap/esm/Button';
+import config from "../../data/config.json"
 
 
 function EditProduct() {
   const {id} = useParams();
-  const found = productsFromFile.find(product => product.id === Number(id));
-
-  const index= productsFromFile.findIndex(product => product.id === Number(id));
+  const [loading, setLoading] = useState(true)
+  const [products, setProducts] = useState([]);
+  const found = products.find(product => product.id === Number(id));
+  const index= products.findIndex(product => product.id === Number(id));
+  const [categories, setCategories] = useState([])
+  
 
   const idRef = useRef()
   const nameRef = useRef()
@@ -20,6 +24,24 @@ function EditProduct() {
   const activeRef = useRef()
   const navigate = useNavigate();
   const [idUnique, setIdUnique] = useState(true);
+
+  useEffect(() => {
+
+    fetch(config.productsDbUrl)
+    .then(res => res.json())
+    .then(json => { 
+      setProducts(json || []);
+      setLoading(false) 
+    });
+
+    
+  }, []);
+
+  useEffect(() => {
+    fetch(config.categoriesDbUrl)
+      .then(res => res.json())
+      .then(json => setCategories(json || []))
+  }, []);
 
   const changeProduct = () => {
     if (idRef.current.value === "") {
@@ -44,8 +66,10 @@ function EditProduct() {
       "active": activeRef.current.checked,
 
     }
-    productsFromFile[index] = updatedProduct;
-    navigate("/admin/maintain-products");
+    products[index] = updatedProduct;
+    fetch(config.productsDbUrl, {"method": "PUT", "body": JSON.stringify(products)})
+      .then(() => navigate("/admin/maintain-products"))   //siis kui valmis saab, siis navigeeri
+    
 
   }
 //   const checkIdUniqueness = () => {
@@ -76,7 +100,7 @@ function EditProduct() {
         return; //ära edasi siit mine
       }
 
-       const index = productsFromFile.find(element => element.id === Number(idRef.current.value));
+       const index = products.find(element => element.id === Number(idRef.current.value));
        if (index === -1) {
        setIdUnique(true)
 
@@ -86,9 +110,15 @@ function EditProduct() {
 
 }
 
+if (loading === true) {
+  return <div>Loading...</div>
+}
+
   return (
     <div> 
-      {/* <div>Id: {id}</div>
+      {found !== undefined && 
+      <div>
+        {/* <div>Id: {id}</div>
       <div>Toode:{found.name}</div>
       <div>JrkNr:{index}</div> */}
       {/* <label>Id</label>  */}
@@ -103,10 +133,15 @@ function EditProduct() {
       {/* <label>Description</label>  */}
       <input ref={descriptionRef} type="text" defaultValue={found.description}/> <br />
       {/* <label>Category</label>  */}
-      <input ref={categoryRef} type="text" defaultValue={found.category}/><br />
+      <select ref={categoryRef} defaultValue={found.category}>
+        {categories.map(category => <option>{category.name}</option>  )}
+      </select><br />
+      {/* <input ref={categoryRef} type="text" defaultValue={found.category}/><br /> */}
       {/* <label>Active</label>  */}
       <input ref={activeRef} type="checkbox" defaultChecked={found.active}/><br />
       <Button disabled={idUnique === false} onClick={changeProduct}>Change</Button>
+      </div>}
+      {found === undefined && <div>Product not found</div>}
     </div>
   )
 }
