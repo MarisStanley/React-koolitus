@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
 // import productsFromFile from "../../data/products.json";
-import "../../css/HomePage.css"
+import styles from "../../css/HomePage.module.css"
 //import cartFromFile from "../../data/cart.json";
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import config from "../../data/config.json"
+import FilterButtons from '../../components/home/FilterButtons';
 
 
 function HomePage() {
   const [products, setProducts] = useState([]);
+  const [dbProducts, setDbProducts] =useState([])
   const { t } = useTranslation();
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
@@ -21,6 +23,7 @@ function HomePage() {
       .then(res => res.json())
       .then(json => { 
         setProducts(json || []);
+        setDbProducts(json || []);
         setLoading(false) 
       });
 
@@ -107,10 +110,7 @@ function HomePage() {
   //     setProducts(result);
   //   }
 
-  const filterByCategory = (categoryClicked) => {
-    const result = products.filter(product => product.category.includes(categoryClicked)); // IIcategoryClicked on muutuvas seisundis
-    setProducts(result);
-  }
+  
 
   if (loading === true) {
     return <div>Loading...</div>
@@ -129,18 +129,18 @@ function HomePage() {
         <button onClick={() => filterByCategory("motors")}>{t('cars')}</button>
         <button onClick={() => filterByCategory("motorcycle")}>{t('motorcycles')}</button> */}
       <br />
-      {categories.map(category =>
-        <button key={category.name} onClick={() => filterByCategory(category.name)}>
-          {category.name}</button>
-      )}
-
-      <div className='products'>
+      <FilterButtons 
+      dbProducts={dbProducts}
+      setProducts={setProducts}
+      categories={categories}
+      />
+      <div className={styles.products}>
         {products.filter(e => e.active === true).map(product =>
-          <div key={product.id} className="product">
+          <div key={product.id} className={styles.product}>
             <Link to={'/product/' + product.id}>
               <img src={product.image} alt="" />
 
-              <div className='name'>{product.name}</div>
+              <div className={styles.name}>{product.name}</div>
               <div>{product.price}</div>
             </Link>
             <button onClick={() => addToCart(product)}>{t('add-to-cart')}</button>

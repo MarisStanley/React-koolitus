@@ -1,28 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, {  useState } from 'react'
 import { Link } from 'react-router-dom'
 //import cartFromFile from "../../data/cart.json";
 import { useTranslation } from 'react-i18next';
 //import omnivaFromFile from "../../data/omniva.json"
-import "../../css/Cart.css"
+import styles from "../../css/Cart.module.css"
+import ParcelMachines from '../../components/cart/ParcelMachines';
+import Payment from '../../components/cart/Payment';
 
 function Cart() {
   const { t } = useTranslation();
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
   //const [cart, setCart] = useState(cartFromFile);
-  const [parcelMachines, setParchelMachines] = useState([]); //koikuv
-  const [dbparcelMachines, setDbParchelMachines] = useState([]); //koguaeg uks ja sama
-  //input
-  const searchedRef = useRef();
-
-
-  useEffect(() => {
-    fetch("https://www.omniva.ee/locations.json")
-    .then(response => response.json())  // kogu tagastus. API päring
-    .then(json => {
-      setParchelMachines(json || []);
-      setDbParchelMachines(json || []);
-    })   //võetakse sisu ja pannakse automaati
-  }, []);
+ 
 
 
  
@@ -69,37 +58,26 @@ function Cart() {
   };
 
 
-
-  //onChange
-  const searchFromPMs = () => {
-    const result = dbparcelMachines.filter(pm =>
-      pm.NAME.toLowerCase().replace("õ", "o")
-        .includes(searchedRef.current.value.toLowerCase().replace("õ", "o")));
-    setParchelMachines(result)
-
-  }
-
-
   return (
     <div>
       {cart.length !== 0 && <button onClick={emptyCart}>{t('empty-cart')}</button>}
       {cart.length === 1 && <div>{t('there-is')} {cart.length}  {t('item-in-the-cart')}.</div>}
       {cart.length >= 2 && <div>{t('there-are')} {cart.length}  {t('items-in-the-cart')}.</div>}
       {cart.map((element, index) => (
-        <div className='cart-product' key={index}>
-          <img className="image" src={element.product.image} alt="" />
-          <div className='name'>{element.product.name}</div>
-          <div className='price'>{element.product.price} €</div>
+        <div className={styles.product} key={index}>
+          <img className={styles.image} src={element.product.image} alt="" />
+          <div className={styles.name}>{element.product.name}</div>
+          <div className={styles.price}>{element.product.price} €</div>
 
-          <div className='quantity'>
-          <img className='button' onClick={() => decreaseQuantity(index)} src="/minus.png" alt=""></img>
+          <div className={styles.quantity}>
+          <img className={styles.button} onClick={() => decreaseQuantity(index)} src="/minus.png" alt=""></img>
           <div>{element.quantity} pcs</div>
-          <img className='button' onClick={() => increaseQuantity(index)}  src="/add.png" alt=""></img>
+          <img className={styles.button} onClick={() => increaseQuantity(index)}  src="/add.png" alt=""></img>
           </div>
           
-          <div className='total'>{element.product.price * element.quantity} €</div>
+          <div className={styles.total}>{element.product.price * element.quantity} €</div>
           {/* <div>{t('remove-item')}</div> */}
-          <img className='button' onClick={() => removeFromCart(index)} src="/delete.png" alt=""></img>
+          <img className={styles.button} onClick={() => removeFromCart(index)} src="/delete.png" alt=""></img>
         </div>))}
       <br />
 
@@ -115,13 +93,8 @@ function Cart() {
         <div>
           <div>{t('total')}: {calculateCartSum()} €.</div>
           <br /><br />
-          <input type="text" ref={searchedRef} onChange={searchFromPMs} /><br />
-          <select>
-            {parcelMachines
-              .filter(pm => pm.ZIP !== "96331")
-              .filter(pm => pm.A0_NAME === "EE")
-              .map(pm => <option key={pm.NAME}>{pm.NAME}</option>)}
-          </select>
+          <ParcelMachines/>
+          <Payment sum={calculateCartSum()} />
         </div>}
 
       {cart.length === 0 && <div>{t('shopping-cart-is-empty')}.  <Link to="/">{t('add-products')}</Link> <br /> <img src="images.jpeg" alt="" /></div>}
