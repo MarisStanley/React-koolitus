@@ -5,6 +5,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Shop from './pages/Shop';
 import SingleProduct from './pages/SingleProduct';
+import Cart from './pages/Cart';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -27,6 +28,9 @@ function App() {
           
         </Navbar.Collapse>
         <Navbar.Brand  > <img className="logo" src="THE4.png" alt="" /></Navbar.Brand>
+        <Nav>
+        <Nav.Link as={Link}  to="/cart">Cart</Nav.Link>
+        </Nav>
       </Container>
     </Navbar>
       
@@ -42,6 +46,7 @@ function App() {
      <Route path="contact" element={ < Contact />}/> 
      <Route path="about" element={ < About />}/> 
      <Route path="product/:id" element={ < SingleProduct />}/> 
+     <Route path="cart" element={ < Cart />}/> 
      </Routes>
     </div>
   );

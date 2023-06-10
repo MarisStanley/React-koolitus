@@ -14,7 +14,7 @@ function Shop() {
   }, []);
 
   return (
-    <div>
+    <div  className='background'>
       <div className='products'>
         {products.map(el =>
           <div key={el.id}>

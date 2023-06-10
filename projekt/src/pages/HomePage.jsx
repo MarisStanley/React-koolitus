@@ -12,7 +12,7 @@ function HomePage() {
       .then(json => setProducts(json || []));
   }, []);
   return (
-    <div>
+    <div className='background-home'>
       {/* <div className='yellow-lines'></div> */}
 
       {/* <div className='headline'> THE <br />  BEACH  <br />  SHOP <br />  </div> */}
