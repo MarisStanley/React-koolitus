@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between 5px;
     border-bottom: 1px solid lightgray ;
-    
     margin:10px 10%;
     padding: 5px 10px;
     padding-top: 70px;
@@ -20,39 +19,64 @@
 }
 
 .price {
-    width: 80px;
+    width: 100px;
     padding-top: 70px;
+    font-size: larger ;
+    font-weight: 400 ;
+    
 }
 
-.button {
-    width: 30px;
-    height: 30px;
+.button-cart {
+    width: auto;
+    height: 40px;
+    margin-top: 65px; 
+    
+
 
 }
 
-.button:hover {
+.button-cart:hover {
     cursor: pointer;
     opacity: 0.7;
 }
 
-.button:active {
+.button-cart:active {
     padding: 17px;
 }
 
-.quantity {
+.buttons-cart {
     display: flex;
     justify-content:  space-between;
-    width: 120px;
-    width: 80px;
-
+    width: 90px;
+    
 }
 
-.total {
-    width: 80px;
-
-}
 
 .image {
-    width: 150px;
+    width: 100px;
     height: auto;
+}
+
+.cart-info {
+    display: grid;
+    justify-content: flex-end;
+    margin-right: 650px; 
+    text-align: center;
+  }
+
+  .parcel-machines-container {
+    margin-top: 20px; /* Adjust the margin value as per your preference */
+  }
+
+  .empty-cart-button {
+    background-color: rgb(160, 153, 153);
+    border: none;
+    outline: none;
+  }
+
+  .empty-cart-button:hover,
+  .empty-cart-button:focus {
+  background-color: darkgray;
+  border-color: darkgray;
+  color: white;
 }

@@ -6,6 +6,8 @@ import About from './pages/About';
 import Shop from './pages/Shop';
 import SingleProduct from './pages/SingleProduct';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import Login from './pages/Login';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -25,12 +27,21 @@ function App() {
           <Nav.Link as={Link}  to="/contact">Contact</Nav.Link>
           <Nav.Link as={Link}  to="/about">About</Nav.Link>
            </Nav>
-          
-        </Navbar.Collapse>
-        <Navbar.Brand  > <img className="logo" src="THE4.png" alt="" /></Navbar.Brand>
-        <Nav>
+           <Nav>
+        <Nav.Link as={Link}  to="/login">Login</Nav.Link>
         <Nav.Link as={Link}  to="/cart">Cart</Nav.Link>
+        <div className='lang'>
+        <div> ENG</div>
+        <div> /</div>
+        <div> EST</div>
+       </div>
+        
         </Nav>
+        </Navbar.Collapse>
+        <Navbar.Brand  > <img className="logo" src="THE4.png" alt="" />
+        
+        </Navbar.Brand>
+       
       </Container>
     </Navbar>
       
@@ -47,6 +58,8 @@ function App() {
      <Route path="about" element={ < About />}/> 
      <Route path="product/:id" element={ < SingleProduct />}/> 
      <Route path="cart" element={ < Cart />}/> 
+     <Route path="checkout" element={ < Checkout />}/>
+     <Route path="login" element={ < Login />}/>
      </Routes>
     </div>
   );
