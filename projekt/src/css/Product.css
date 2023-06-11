@@ -159,3 +159,19 @@
     font-size: 16px; /* Adjust the font size as desired */
     margin-left: 10px;  /* Adjust the font size as desired */
   }
+
+  .link-black {
+    color: black;
+    text-decoration: none; /* Remove underline */
+  font-family: Arial, sans-serif;
+  font-size: large;
+  }
+
+  .link-black:hover,
+  .link-black:focus {
+    
+    border: none;
+    outline: none;
+    color: black;
+    
+  }

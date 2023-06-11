@@ -8,6 +8,7 @@ import SingleProduct from './pages/SingleProduct';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Login from './pages/Login';
+
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -38,7 +39,7 @@ function App() {
         
         </Nav>
         </Navbar.Collapse>
-        <Navbar.Brand  > <img className="logo" src="THE4.png" alt="" />
+        <Navbar.Brand as={Link}  to="" > <img className="logo" src="THE4.png" alt="" />
         
         </Navbar.Brand>
        

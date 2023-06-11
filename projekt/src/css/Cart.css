@@ -69,14 +69,29 @@
   }
 
   .empty-cart-button {
+    position: absolute;
     background-color: rgb(160, 153, 153);
     border: none;
     outline: none;
+    left: 190px; 
   }
 
   .empty-cart-button:hover,
   .empty-cart-button:focus {
   background-color: darkgray;
+  border-color: darkgray;
+  color: white;
+}
+
+.continue-to-checkout {
+    background-color: rgb(160, 153, 153);
+    border: none;
+    outline: none;
+}
+
+.continue-to-checkout:hover,
+.continue-to-checkout:focus {
+    background-color: darkgray;
   border-color: darkgray;
   color: white;
 }

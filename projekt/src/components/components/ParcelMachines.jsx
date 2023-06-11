@@ -27,8 +27,15 @@ function ParcelMachines() {
 
     return (
         <div>
-            <input type="text" ref={searchedRef} onChange={searchFromPMs} /><br />
+             
+                
+                <input type="text" ref={searchedRef} onChange={searchFromPMs} /><br />
+                
+           
             <select>
+           
+            <option value="">Select the parcel machine</option>
+            
                 {parcelMachines
                     .filter(pm => pm.ZIP !== "96331")
                     .filter(pm => pm.A0_NAME === "EE")

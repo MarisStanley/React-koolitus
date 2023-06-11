@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/esm/Button';
 import { Link } from 'react-router-dom';
 import config from '../../src/data/config.json'
-import {  useTranslation , i18n} from 'react-i18next';
+import { useTranslation, i18n } from 'react-i18next';
 
 
 function HomePage() {
@@ -23,7 +23,7 @@ function HomePage() {
     <div className='background-home'>
       {/* <div className='yellow-lines'></div> */}
 
-     
+
       <img className="pilt" src="banner.jpg" alt="" />
       <div className='headline1'> BESTSELLERS</div>
 
@@ -31,9 +31,10 @@ function HomePage() {
         {products
           .filter((el) => el.id === Number('35422022') || el.id === Number('35422021') || el.id === Number('35422023'))
           .map((el) => (
-            <div key={el.id} className="image-container">
-              <img   className='purse1' src={el.image}  alt="" />
-              <Button as={Link} to={'/product/' + el.id} className='button'>View</Button>
+            <div key={el.id} className="image-container" >
+              <Link to={'/product/' + el.id}>
+                <img className='bestsellers' src={el.image} alt="" />
+              </Link>
             </div>
           ))}
       </div>
