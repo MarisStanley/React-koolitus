@@ -6,14 +6,23 @@ import About from './pages/About';
 import Shop from './pages/Shop';
 import SingleProduct from './pages/SingleProduct';
 import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
+import Checkout from './components/Checkout';
 import Login from './pages/Login';
-
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import {  useTranslation } from 'react-i18next';
 
 function App() {
+  const { t, i18n } = useTranslation();
+
+  const languageTo = (languageClicked) => {
+    i18n.changeLanguage(languageClicked);
+    localStorage.setItem("language", languageClicked);
+
+
+  };
+
   return (
     <div  className="App">
       <Navbar collapseOnSelect expand="lg" bg="f000000" variant="light">
@@ -23,18 +32,18 @@ function App() {
         <Navbar.Collapse id="responsive-navbar-nav">
        
           <Nav className="me-auto">
-          <Nav.Link as={Link}  to="">Home</Nav.Link>
-          <Nav.Link as={Link}  to="/shop">Shop</Nav.Link>
-          <Nav.Link as={Link}  to="/contact">Contact</Nav.Link>
-          <Nav.Link as={Link}  to="/about">About</Nav.Link>
+          <Nav.Link as={Link}  to="">{t('home')}</Nav.Link>
+          <Nav.Link as={Link}  to="/shop">{t('shop')}</Nav.Link>
+          <Nav.Link as={Link}  to="/contact">{t('contact')}</Nav.Link>
+          <Nav.Link as={Link}  to="/about">{t('about')}</Nav.Link>
            </Nav>
            <Nav>
-        <Nav.Link as={Link}  to="/login">Login</Nav.Link>
-        <Nav.Link as={Link}  to="/cart">Cart</Nav.Link>
-        <div className='lang'>
-        <div> ENG</div>
-        <div> /</div>
-        <div> EST</div>
+        <Nav.Link as={Link}  to="/login">{t('login')}</Nav.Link>
+        <Nav.Link as={Link}  to="/cart">{t('cart')}</Nav.Link>
+        <div >
+        <button className='lang-button-1' onClick={() => languageTo("en")}>  ENG</button>
+        <div className='lang-button'> /</div>
+        <button className='lang-button' onClick={() => languageTo("ee")}> EST</button>
        </div>
         
         </Nav>

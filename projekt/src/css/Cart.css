@@ -27,22 +27,17 @@
 }
 
 .button-cart {
+    
     width: auto;
     height: 40px;
     margin-top: 65px; 
-    
-
-
-}
+    }
 
 .button-cart:hover {
     cursor: pointer;
     opacity: 0.7;
 }
 
-.button-cart:active {
-    padding: 17px;
-}
 
 .buttons-cart {
     display: flex;
@@ -70,28 +65,27 @@
 
   .empty-cart-button {
     position: absolute;
-    background-color: rgb(160, 153, 153);
-    border: none;
-    outline: none;
     left: 190px; 
+    background-color: #48B3E1;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #363535;
+  
   }
 
   .empty-cart-button:hover,
   .empty-cart-button:focus {
-  background-color: darkgray;
-  border-color: darkgray;
-  color: white;
+    background-color: #48B3E1;
+    color: #fff;
 }
 
 .continue-to-checkout {
-    background-color: rgb(160, 153, 153);
-    border: none;
-    outline: none;
+    background-color: #48B3E1;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #363535;
 }
 
 .continue-to-checkout:hover,
 .continue-to-checkout:focus {
-    background-color: darkgray;
-  border-color: darkgray;
-  color: white;
+    background-color: #48B3E1;
+    color: #fff;
 }

@@ -3,7 +3,7 @@ import config from '../../src/data/config.json'
 import "../../src/css/Shop.css"
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Sidebar from '../components/components/Sidebar'
+
 
 function Shop() {
   const [products, setProducts] = useState([]);
@@ -57,23 +57,26 @@ function Shop() {
 
   return (  <div>
    
-   <div className='sidebar'>
-   <div>
-    <button onClick={sortAZ}>{t('sortAZ')}</button>
-    <button onClick={sortZA}>{t('sortZA')}</button>
-    <button onClick={sortPriceAsc}>{t('sortPriceAsc')}</button>
-    <button onClick={sortPriceDesc}>{t('sortPriceDesc')}</button>
+   <div >
+   <div className='filter-style'>
+   
+    <button  className='btn' onClick={sortAZ}>{t('sortAZ')}</button>
+    <button  className='btn' onClick={sortZA}>{t('sortZA')}</button>
+    <button  className='btn' onClick={sortPriceAsc}>{t('sortPriceAsc')}</button>
+    <button  className='btn' onClick={sortPriceDesc}>{t('sortPriceDesc')}</button>
+  
   </div>
      
-  <div>
+  <div className='buttons-style'>
+    
   {[...new Set(categories.map(category => category.category))].map(categoryName => (
-    <button key={categoryName} onClick={() => filterByCategory(categoryName)}>
+    <button  className='btn' key={categoryName} onClick={() => filterByCategory(categoryName)}>
       {categoryName}
     </button>
   ))}
 </div>
    </div>
-   <Sidebar/>
+   
     <div  className='background'>
       <div className='products'>
         {products.map(el =>

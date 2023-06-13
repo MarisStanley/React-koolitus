@@ -1,14 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import "../../src/css/Cart.css"
+
 
 // import Payment from '../../components/cart/Payment'
 import Button from 'react-bootstrap/esm/Button';
 
 
+
 function Cart() {
-  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
+  const [cart, setCart] = useState([]);
+  const { t } = useTranslation();
+  
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+  }, []);
+  
+  
 
 
   const removeFromCart = (index) => {
@@ -52,7 +62,11 @@ function Cart() {
     setCart([]);
     localStorage.setItem("cart", JSON.stringify([]));
   };
-
+ 
+  const handleCheckout = () => {
+    localStorage.setItem('checkoutCart', JSON.stringify(cart));
+    window.location.href = '/checkout';
+  };
 
   return (
     <div>
@@ -63,7 +77,7 @@ function Cart() {
           <Link to={'/product/' + element.product.id}>
             <img className='image' src={element.product.image} alt="" />
           </Link>
-          <div className='name'>Product ID <br />{element.product.id}</div>
+          <div className='name'>{t('product-id')} <br />{element.product.id}</div>
 
           <div className='name'>{element.product.name}</div>
 
@@ -85,25 +99,28 @@ function Cart() {
         </div>))}
       <br />
 
-      {cart.length !== 0 && <Button className='empty-cart-button' onClick={emptyCart}>Empty cart</Button>}
+      {cart.length !== 0 && <Button className='empty-cart-button' onClick={emptyCart}>{t('empty-cart')}</Button>}
 
       <div className='cart-info'>
-        {cart.length === 1 && <div>There is {cart.length} item in the cart.</div>}
-        {cart.length >= 2 && <div>There are {calculateItems()}  items in the cart.</div>}
+        {cart.length === 1 && <div>{t('there-is')} {cart.length} {t('item-in-the-cart')}.</div>}
+        {cart.length >= 2 && <div>{t('there-are')} {calculateItems()} {t('items-in-the-cart')}.</div>}
 
 
         {cart.length > 0 &&
           <div>
-            <div >Total: {calculateCartSum()} €.</div>
+            <div >{t('total')}: {calculateCartSum()} €.</div>
             <br />
           </div>}
-        <Link to={'/checkout/'}>
-          <Button className='continue-to-checkout'>Continue to checkout </Button>
-        </Link>
+          
+          {/* <Link to={{ pathname: '/checkout', search: `?cart=${encodeURIComponent(JSON.stringify(cart))}` }}>
+          <Button className='continue-to-checkout'>Continue to checkout</Button>
+        </Link> */}
+        {cart.length > 0 && <Button className="continue-to-checkout" onClick={handleCheckout}>{t('continue')}</Button>}
+       
       </div>
 
 
-      {cart.length === 0 && <div>Shopping cart is empty.  <Link to="/shop">Add products</Link> <br /> </div>}
+      {cart.length === 0 && <div>{t('shopping-cart-is-empty')}.  <Link to="/shop">{t('add-products')}</Link> <br /> </div>}
     </div>
   )
 }
