@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ParcelMachines from './components/ParcelMachines'
 import CheckoutStyle from '../../src/css/Checkout.css'
+import { Link } from 'react-router-dom';
 
 function Checkout(props) {
 
@@ -32,6 +33,8 @@ function Checkout(props) {
     <div className="checkout-form">
       <div className="row">
         <div className="col-md-4 order-md-2 mb-4">
+
+          <div className='summary'>
           <h4 className="d-flex justify-content-between align-items-center mb-3">
             <span className="text-muted">Summary</span>
             <span className="badge badge-secondary badge-pill">3</span>
@@ -51,11 +54,11 @@ function Checkout(props) {
                     <br />
                   </div>
                 ))}
-                <h6>Shipping charge</h6>
+                <h6>Shipping charge:</h6>
                 <div>3€</div>
               </div>
             </li>
-           
+           <br />
             <li className="list-group-item d-flex justify-content-between bg-light">
               <div className="text-success">
                 <h6 className="my-0">Choose the parcel machine</h6>
@@ -63,11 +66,22 @@ function Checkout(props) {
                 <ParcelMachines />
               </div>
             </li>
-            <li className="list-group-item d-flex justify-content-between">
-              <div>Total: {totalWithShipping} €</div>
-            </li>
+            <br />
+            
+
+            
+            <div className='summary-total-amount'>Total: {totalWithShipping} €</div>
           </ul>
+          <button
+              className="btn btn-primary btn-lg btn-block to-payment-button"
+              type="submit"
+            >
+              Continue to payment
+            </button>
         </div>
+        
+        </div>
+        <div className='mb-shipping-information'>
         <h4 className="d-flex justify-content-between align-items-center mb-3">
           <span className="text-muted">Shipping information</span>
           <span className="badge badge-secondary badge-pill">3</span>
@@ -99,6 +113,18 @@ function Checkout(props) {
                 <div className="invalid-feedback">Valid last name is required.</div>
               </div>
             </div>
+            <div className="col-md-6 mb-8">
+                <label htmlFor="lastName">Company name (optional)</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="lastName"
+                  placeholder=""
+                  optional
+                ></input>
+                
+              </div>
+            
             <div className="mb-3">
               <div className="input-group"></div>
             </div>
@@ -132,14 +158,17 @@ function Checkout(props) {
                 Please enter a valid email address for shipping updates.
               </div>
             </div>
-            <hr className="mb-4"></hr>
+            <Link to={'/cart'}>
             <button
-              className="btn btn-primary btn-lg btn-block"
+              className="btn btn-primary btn-lg btn-block back-to-cart-button"
               type="submit"
+              
             >
-              Continue to payment
+              Back to cart
             </button>
+            </Link>
           </form>
+        </div>
         </div>
       </div>
     </div>

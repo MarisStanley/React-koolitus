@@ -23,7 +23,7 @@ function SingleProduct() {
     }
 
     const addToCart = (productClicked) => {
-        const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartLS = JSON.parse(localStorage.getItem("cart1")) || [];
         const index = cartLS.findIndex(element => element.product.id === productClicked.id);
         if (index >= 0) {
             cartLS[index].quantity++;
@@ -32,7 +32,7 @@ function SingleProduct() {
             cartLS.push({ "product": productClicked, "quantity": 1 });
 
         }
-        localStorage.setItem("cart", JSON.stringify(cartLS));
+        localStorage.setItem("cart1", JSON.stringify(cartLS));
 
 
 

@@ -14,7 +14,7 @@ function Cart() {
   const { t } = useTranslation();
   
   useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const storedCart = JSON.parse(localStorage.getItem("cart1")) || [];
     setCart(storedCart);
   }, []);
   
@@ -24,7 +24,7 @@ function Cart() {
   const removeFromCart = (index) => {
     cart.splice(index, 1)
     setCart(cart.slice());
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart1", JSON.stringify(cart));
 
   }
 
@@ -34,7 +34,7 @@ function Cart() {
       removeFromCart(index);
     }
     setCart(cart.slice());
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart1", JSON.stringify(cart));
 
   }
 
@@ -42,7 +42,7 @@ function Cart() {
 
     cart[index].quantity++;
     setCart(cart.slice());
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart1", JSON.stringify(cart));
   }
 
   const calculateCartSum = () => {
@@ -51,16 +51,26 @@ function Cart() {
     return sum;
   }
 
+  // const calculateItems = () => {
+  //   let items = 0;
+  //   cart.forEach(element => items = items + element.quantity)
+    
+  //   return items;
+  // }
+ 
   const calculateItems = () => {
-    let items = 0;
-    cart.forEach(element => items = items + element.quantity)
-    return items;
-  }
-
+  let items = 0;
+  cart.forEach((element) => {
+    console.log('Element:', element); // Check the values of the elements in the cart
+    items = items + element.quantity;
+    console.log('Items:', items); // Check the value of items after each iteration
+  });
+  return items;
+};
 
   const emptyCart = () => {
     setCart([]);
-    localStorage.setItem("cart", JSON.stringify([]));
+    localStorage.setItem("cart1", JSON.stringify([]));
   };
  
   const handleCheckout = () => {
@@ -102,6 +112,7 @@ function Cart() {
       {cart.length !== 0 && <Button className='empty-cart-button' onClick={emptyCart}>{t('empty-cart')}</Button>}
 
       <div className='cart-info'>
+        
         {cart.length === 1 && <div>{t('there-is')} {cart.length} {t('item-in-the-cart')}.</div>}
         {cart.length >= 2 && <div>{t('there-are')} {calculateItems()} {t('items-in-the-cart')}.</div>}
 
