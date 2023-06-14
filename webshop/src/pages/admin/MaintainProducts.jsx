@@ -3,8 +3,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import Button from 'react-bootstrap/esm/Button';
 import { Link } from 'react-router-dom';
 import { t } from 'i18next';
-import "../../css/MaintainProducts.css";
+import styles from "../../css/MaintainProducts.module.css";
 import config from "../../data/config.json"
+import SortButtons from '../../components/home/SortButtons';
 
 function MaintainProducts() {
   const [products, setProducts] = useState([]); //koikuv suurus -> 
@@ -51,9 +52,12 @@ function MaintainProducts() {
 
   return (
     <div>
+       <SortButtons products={products}  setProducts={setProducts}/>
       <input onChange={searchFromProducts} ref={searchedRef} type="text" />
       <span>{products.length} {t('items')}</span>
+     
       <tbody>
+       
         <table>
           <thead>
             <tr>
@@ -67,8 +71,8 @@ function MaintainProducts() {
             </tr>
           </thead>
           {products.map((product, index) =>
-            <tr key={product.id}  className= { product.active === true ? "active" : "inactive"} >
-              <td> <img className={product.active === true ?'image' : "image-blurred"} src={product.image} alt="" /></td>
+            <tr key={product.id}  className= { product.active === true ? styles.active : styles.inactive} >
+              <td> <img className={product.active === true ? styles.image : styles['image-blurred']} src={product.image} alt="" /></td>
               <td>{product.id}</td>
 
               <td>{product.name}</td>

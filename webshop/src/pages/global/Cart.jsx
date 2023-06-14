@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 //import cartFromFile from "../../data/cart.json";
 import { useTranslation } from 'react-i18next';
@@ -6,21 +6,21 @@ import { useTranslation } from 'react-i18next';
 import styles from "../../css/Cart.module.css"
 import ParcelMachines from '../../components/cart/ParcelMachines';
 import Payment from '../../components/cart/Payment';
+import { useContext } from 'react';
+import { CartSumContext } from '../../store/CartSumContext';
 
 function Cart() {
   const { t } = useTranslation();
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
+  const { setCartSum } = useContext(CartSumContext)
+
   //const [cart, setCart] = useState(cartFromFile);
- 
-
-
- 
 
   const removeFromCart = (index) => {
     cart.splice(index, 1)
     setCart(cart.slice());
     localStorage.setItem("cart", JSON.stringify(cart));
-
+    setCartSum(calculateCartSum());
   }
 
   const decreaseQuantity = (index) => {
@@ -30,14 +30,14 @@ function Cart() {
     }
     setCart(cart.slice());
     localStorage.setItem("cart", JSON.stringify(cart));
-
+    setCartSum(calculateCartSum());
   }
 
   const increaseQuantity = (index) => {
-
     cart[index].quantity++; //muudan
     setCart(cart.slice()); //HTML
     localStorage.setItem("cart", JSON.stringify(cart)); //salvestus
+    setCartSum(calculateCartSum());
   }
 
   const calculateCartSum = () => {
@@ -55,6 +55,7 @@ function Cart() {
   const emptyCart = () => {
     setCart([]);  //muudab HTMLi
     localStorage.setItem("cart", JSON.stringify([])); //muudab salvestust
+    setCartSum('0.00');
   };
 
 
@@ -70,11 +71,11 @@ function Cart() {
           <div className={styles.price}>{element.product.price} €</div>
 
           <div className={styles.quantity}>
-          <img className={styles.button} onClick={() => decreaseQuantity(index)} src="/minus.png" alt=""></img>
-          <div>{element.quantity} pcs</div>
-          <img className={styles.button} onClick={() => increaseQuantity(index)}  src="/add.png" alt=""></img>
+            <img className={styles.button} onClick={() => decreaseQuantity(index)} src="/minus.png" alt=""></img>
+            <div>{element.quantity} pcs</div>
+            <img className={styles.button} onClick={() => increaseQuantity(index)} src="/add.png" alt=""></img>
           </div>
-          
+
           <div className={styles.total}>{element.product.price * element.quantity} €</div>
           {/* <div>{t('remove-item')}</div> */}
           <img className={styles.button} onClick={() => removeFromCart(index)} src="/delete.png" alt=""></img>
@@ -93,7 +94,7 @@ function Cart() {
         <div>
           <div>{t('total')}: {calculateCartSum()} €.</div>
           <br /><br />
-          <ParcelMachines/>
+          <ParcelMachines />
           <Payment sum={calculateCartSum()} />
         </div>}
 

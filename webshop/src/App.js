@@ -1,5 +1,5 @@
 
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/global/HomePage';
 import Cart from './pages/global/Cart';
@@ -14,16 +14,14 @@ import MaintainCategories from './pages/admin/MaintainCategories';
 import MaintainShops from './pages/admin/MaintainShops';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import {  useTranslation , i18n} from 'react-i18next';
-import { changeLanguage } from 'i18next';
+
+
+
+import NavigationBar from './components/NavigationBar';
 
 
 
 function App() {
-  const { t, i18n } = useTranslation();
   
 
   // const languageToEn = () => {
@@ -49,48 +47,13 @@ function App() {
   //   localStorage.setItem("language", "no")
     
   // }
-  const languageTo = (languageClicked) => {
-    i18n.changeLanguage(languageClicked);
-    localStorage.setItem("language", languageClicked);
-  };
-
+  
 
 
   return (
     <div className="App">
       
-
-
-<Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-      <Container>
-        <Navbar.Brand as={Link} to="/">  Maris's Shop </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link}  to="/admin">{t("admin")}</Nav.Link>
-            <Nav.Link as={Link}  to="/contact">{t("contact")}</Nav.Link>
-            <Nav.Link as={Link}  to="/shops">{t("shops")}</Nav.Link>
-          </Nav>
-          <Nav>
-            {/* <img className='lang' src="/english.png" onClick={languageToEn} alt="" />
-            <img className='lang' src="/estonia.png" onClick={languageToEe} alt="" />
-            <img className='lang' src="/poland.png" onClick={languageToPl} alt="" />
-            <img className='lang' src="/norway.png" onClick={languageToNo} alt="" />
-             */}
-             <img className='lang' src="/english.png" onClick={() => languageTo("en")} alt="" />
-            <img className='lang' src="/estonia.png" onClick={() => languageTo("ee")} alt="" />
-            <img className='lang' src="/poland.png" onClick={() => languageTo("pl")} alt="" />
-            <img className='lang' src="/norway.png" onClick={() => languageTo("no")} alt="" />
-            
-            <Nav.Link  as={Link}  to="/cart">{t("cart")}</Nav.Link>
-            
-            
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-
-  
+  <NavigationBar/>
 
       <Routes>
         <Route path=""   element={ <HomePage/> } />

@@ -2,20 +2,24 @@ import React, { useEffect, useState } from 'react'
 // import productsFromFile from "../../data/products.json";
 import styles from "../../css/HomePage.module.css"
 //import cartFromFile from "../../data/cart.json";
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { ToastContainer, toast } from 'react-toastify';
+
+import { ToastContainer } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 import config from "../../data/config.json"
 import FilterButtons from '../../components/home/FilterButtons';
+import SortButtons from '../../components/home/SortButtons';
+import Product from '../../components/home/Product';
+
 
 
 function HomePage() {
   const [products, setProducts] = useState([]);
   const [dbProducts, setDbProducts] =useState([])
-  const { t } = useTranslation();
+  
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
+  
 
   useEffect(() => {
 
@@ -44,25 +48,7 @@ function HomePage() {
 
   //   }
 
-  const addToCart = (productClicked) => {
-    const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
-    const index = cartLS.findIndex(element => element.product.id === productClicked.id);
-    if (index >= 0) {
-      cartLS[index].quantity++;
-
-    } else {
-      cartLS.push({ "product": productClicked, "quantity": 1 });
-
-    }
-    localStorage.setItem("cart", JSON.stringify(cartLS));
-
-    //setProducts(productsFromFile.slice());
-    toast.success('Item added to cart!', {
-      position: toast.POSITION.TOP_RIGHT
-    })
-
-
-  }
+  
 
   const sortAZ = () => {
     products.sort((a, b) => a.name.localeCompare(b.name));
@@ -119,10 +105,13 @@ function HomePage() {
   return (
     <div>
       <br />
-      <button onClick={sortAZ}>{t('sortAZ')}</button>
-      <button onClick={sortZA}>{t('sortZA')}</button>
-      <button onClick={sortPriceAsc}>{t('sortPriceAsc')}</button>
-      <button onClick={sortPriceDesc}>{t('sortPriceDesc')}</button>
+      <SortButtons
+      sortAZ={sortAZ}
+      sortZA={sortZA}
+      sortPriceAsc={sortPriceAsc}
+      sortPriceDesc={sortPriceDesc}
+      
+      />
       <br />
       {/* <button onClick={() => filterByCategory("tent")}>{t('tents')}</button>
         <button onClick={() => filterByCategory("camping")}>{t('camping-gear')}</button>
@@ -135,17 +124,9 @@ function HomePage() {
       categories={categories}
       />
       <div className={styles.products}>
-        {products.filter(e => e.active === true).map(product =>
-          <div key={product.id} className={styles.product}>
-            <Link to={'/product/' + product.id}>
-              <img src={product.image} alt="" />
-
-              <div className={styles.name}>{product.name}</div>
-              <div>{product.price}</div>
-            </Link>
-            <button onClick={() => addToCart(product)}>{t('add-to-cart')}</button>
-          </div>
-        )}
+        {products.filter(e => e.active === true).map(product => (
+         <Product key={product.id} product={product}/>
+       ) )}
       </div>
       <ToastContainer />
     </div>

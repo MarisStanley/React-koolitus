@@ -20,11 +20,11 @@ function ParcelMachines() {
 
     const searchFromPMs = () => {
         const result = dbparcelMachines.filter(pm =>
-          pm.NAME.toLowerCase().replace("õ", "o")
-            .includes(searchedRef.current.value.toLowerCase().replace("õ", "o")));
+            pm.NAME.toLowerCase().replace("õ", "o")
+                .includes(searchedRef.current.value.toLowerCase().replace("õ", "o")));
         setParchelMachines(result)
-    
-      }
+
+    }
 
     return (
         <div>

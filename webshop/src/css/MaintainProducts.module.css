@@ -4,6 +4,7 @@ table {
 
 th, td {
     border: 1px solid black;
+    
 }
 .active {
     border: 1px solid green;
@@ -21,3 +22,8 @@ th, td {
     /* opacity: 0.2; */
     filter: grayscale(100%);
 }
+.image {
+    height: 100px;
+    width: 120px;
+  }
+  
