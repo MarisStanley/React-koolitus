@@ -49,7 +49,7 @@
 
 .summary {
   position: absolute;
-  margin-top: -320px;
+  margin-top: -360px;
   margin-left: 1100px;
 }
 
@@ -62,14 +62,14 @@
 
 .to-payment-button {
   position: absolute;
-  left: 220px;
+  left: 210px;
   background-color: #48B3E1;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #363535;
   padding: 10px 18px;
   /* Adjust padding to make the button smaller */
   font-size: 16px;
-  width: 190px;
+  width: 200px;
 }
 
 .to-payment-button:hover,
@@ -86,8 +86,8 @@
 
 .back-to-cart-button {
   position: absolute;
-  left: 10px;
-  margin-top: 115px;
+  left: 4px;
+  top: 70px;
   background-color: #48B3E1;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #363535;

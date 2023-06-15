@@ -22,6 +22,7 @@ function App() {
 
 
   };
+  
 
   return (
     <div  className="App">
@@ -40,15 +41,15 @@ function App() {
            <Nav>
         <Nav.Link as={Link}  to="/login">{t('login')}</Nav.Link>
         <Nav.Link as={Link}  to="/cart">{t('cart')}</Nav.Link>
-        <div >
-        <button className='lang-button-1' onClick={() => languageTo("en")}>  ENG</button>
-        <div className='lang-button'> /</div>
-        <button className='lang-button' onClick={() => languageTo("ee")}> EST</button>
-       </div>
+        
+        <Nav.Link className='lang-button-1'  onClick={() => languageTo("en")}>  ENG</Nav.Link>
+        <Nav.Link className='lang-button'> /</Nav.Link>
+        <Nav.Link className='lang-button'  onClick={() => languageTo("ee")}> EST</Nav.Link>
+       
         
         </Nav>
         </Navbar.Collapse>
-        <Navbar.Brand as={Link}  to="" > <img className="logo" src="THE4.png" alt="" />
+         <Navbar.Brand as={Link}  to="" > <img className="logo" src="THE4.png" alt="" />
         
         </Navbar.Brand>
        

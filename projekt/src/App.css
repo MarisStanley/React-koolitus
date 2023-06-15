@@ -178,7 +178,7 @@
   
   display: flex;
   justify-content: center;
-  margin: 0 0px;
+  margin: 0 auto;
   
 }
 
@@ -285,32 +285,202 @@
   color: white;
 }
 
-.lang-button-1 {
-  position: absolute;
-  width: 20%;
-  height: auto;
-  font-weight: 250;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color: rgb(83, 82, 82);
-  margin-top: 7px;
-  left: 460px;
-  display: flex;
-  border: none;
-  
-  background-color: transparent;
+.lang-button {
+  margin-right: -15px;
 }
 
-.lang-button {
-  position: absolute;
-  width: 20%;
-  height: auto;
-  font-weight: 250;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color: rgb(83, 82, 82);
-  margin-top: 7px;
-  left: 500px;
-  display: flex;
-  border: none;
-  
-  background-color: transparent;
+.lang-button-1 {
+  margin-right: -15px;
 }
+
+
+.contact-footer {
+   position: absolute;
+   margin-top: -210px;
+   margin-left: 180px;
+   text-align: center;
+   font-size: 18px;
+}
+
+.contact-us-footer {
+  position: absolute;
+   margin-top: -264px;
+   margin-left: 257px;
+   text-align: center;
+   font-size: 22px;
+   
+}
+
+@media only screen and (max-width: 1700px) {  
+  .headline3 {
+    top: 70%;
+  left: 18%;
+  }
+
+}
+
+@media only screen and (max-width: 1500px) {  
+  .headline3 {
+    top: 70%;
+  left: 16%;
+  }
+
+}
+
+@media only screen and (max-width: 1400px) {  
+  .headline3 {
+    top: 70%;
+  left: 16%;
+  font-size: 5rem;
+  }
+
+  .headline2 {
+    font-size: 5rem;
+  }
+  
+  .pilt7 {
+    width: 1000%;
+  }
+
+  .pilt3 {
+    width: 90%; 
+    height: auto;
+  }
+  
+  .pilt5 {
+    width: 90%; 
+    height: auto;
+  }
+  
+  .headline1 {
+    font-size: 4.5rem; 
+    left: 27%;
+  }
+}
+
+@media only screen and (max-width: 1330px) {  
+  .lang-button-1 {
+    left: 500px;
+  }
+
+  .lang-button {
+    left: 540px;
+  }
+
+}
+
+@media only screen and (max-width: 1200px) {  
+  .lang-button-1 {
+    left: 450px;
+  }
+
+  .lang-button {
+    left: 490px;
+  }
+
+}
+
+@media only screen and (max-width: 1140px) {  
+.headline3 {
+  font-size: 4rem;
+}
+.headline2 {
+  font-size: 4rem;
+  left: 58%;
+}
+
+.pilt3 {
+  width: 80%; 
+  height: auto;
+}
+
+.pilt5 {
+  width: 80%; 
+  height: auto;
+}
+ .contact-footer  {
+  font-size:16px;
+  margin-left: 130px;
+
+ }
+ .contact-us-footer { 
+  font-size:20px;
+  margin-left: 200px;
+ }
+
+}
+
+
+
+@media only screen and (max-width: 1100px) {  
+  .lang-button-1 {
+    left: 410px;
+  }
+
+  .lang-button {
+    left: 450px;
+  }
+
+}
+
+@media only screen and (max-width: 1000px) {  
+  .headline3 {
+    font-size: 3rem;
+  }
+  .headline2 {
+    font-size: 3rem;
+    left: 60%;
+  }
+  
+  .pilt3 {
+    width: 70%; 
+    height: auto;
+  }
+  
+  .pilt5 {
+    width: 70%; 
+    height: auto;
+  }
+   .contact-footer  {
+    font-size:16px;
+    margin-left: 130px;
+  
+   }
+   .contact-us-footer { 
+    font-size:20px;
+    margin-left: 200px;
+   }
+    .grid-container {
+      grid-gap: 0px;
+    }
+   
+    .headline1 {
+      font-size: 3.5rem; 
+      left: 28%;
+      top: 120%;
+    }
+
+  }
+
+  @media only screen and (max-width: 875px) {  
+    .image-container {
+      
+      display: grid;
+      flex-direction: row;
+      align-items: center;
+      margin: 0 auto;
+      grid-gap: 30px;
+      
+    }
+     
+    .bestsellers {
+      width: 100%;
+    margin: 0;
+    padding: 0;
+    
+      
+     
+    }
+
+
+  }

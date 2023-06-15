@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import config from '../../src/data/config.json'
 import "../../src/css/Product.css"
-import Button from 'react-bootstrap/esm/Button';
-import {  useTranslation } from 'react-i18next';
+import {Button} from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 function SingleProduct() {
-     const { t } = useTranslation();
+    const { t } = useTranslation();
     const [products, setProducts] = useState([]);
     const { id } = useParams();
     const result = products.find((el) => el.id === Number(id));
@@ -33,11 +33,6 @@ function SingleProduct() {
 
         }
         localStorage.setItem("cart1", JSON.stringify(cartLS));
-
-
-
-
-
     }
 
     const availableSizes = [].concat.apply([], products
@@ -65,8 +60,8 @@ function SingleProduct() {
                 <div className='product-price'>{t('price')}:  {result.price}€</div> <br />
                 <div className='tables'>
                     <label className='text' htmlFor="">{t('size')}: </label>
-                    <select className='select' defaultValue=''> 
-                    <option value="">{t('select-size')}</option>
+                    <select className='select' defaultValue=''>
+                        <option value="">{t('select-size')}</option>
                         {availableSizes.map((size, index) => (
                             <option key={index} value={size} selected={size === result.size}>
                                 {size}
@@ -76,7 +71,7 @@ function SingleProduct() {
                     <br /> <br />
                     <label className='text' htmlFor="">{t('color')}: </label>
                     <select className="select" defaultValue=''>
-                    <option value=""> {t('select-color')}  </option>
+                        <option value=""> {t('select-color')}  </option>
                         {availableColors.map((color) => (
                             <option key={color} value={color}>
                                 {color}
@@ -84,7 +79,7 @@ function SingleProduct() {
                         ))}
                     </select>
                 </div>
-                <Button onClick={() => addToCart(result)} variant="secondary" className="add-to-cart-button">{t('add-to-cart')}</Button>
+                <Button  onClick={() => addToCart(result)} variant="outlined" className="add-to-cart-button">{t('add-to-cart')}</Button>
             </div>
             <div className='product-image'>
                 <img className='product-img' src={process.env.PUBLIC_URL + "/" + result.image} alt="" /></div>

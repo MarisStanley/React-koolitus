@@ -3,6 +3,7 @@ import config from '../../src/data/config.json'
 import "../../src/css/Shop.css"
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import {Button} from '@mui/material';
 
 
 function Shop() {
@@ -55,24 +56,33 @@ function Shop() {
       }
   
 
-  return (  <div>
+  return (  <div className='shop' >
    
    <div >
-   <div className='filter-style'>
-   
-    <button  className='btn' onClick={sortAZ}>{t('sortAZ')}</button>
-    <button  className='btn' onClick={sortZA}>{t('sortZA')}</button>
-    <button  className='btn' onClick={sortPriceAsc}>{t('sortPriceAsc')}</button>
-    <button  className='btn' onClick={sortPriceDesc}>{t('sortPriceDesc')}</button>
-  
-  </div>
-     
-  <div className='buttons-style'>
+   <nav className="filter-style">
+      <div  >
+          <div >
+            <Button variant="" className="btn" onClick={sortAZ}>{t('sortAZ')}</Button>
+          </div>
+          <div >
+            <Button variant="" className="btn" onClick={sortZA}>{t('sortZA')}</Button>
+          </div>
+          <div >
+            <Button variant="" className="btn" onClick={sortPriceAsc}>{t('sortPriceAsc')}</Button>
+          </div>
+          <div >
+            <Button variant="" className="btn" onClick={sortPriceDesc}>{t('sortPriceDesc')}</Button>
+          </div>
+      </div>
+    </nav>
+
+    <hr class="horizontal-line"></hr>
     
+  <div className='buttons-style'>
   {[...new Set(categories.map(category => category.category))].map(categoryName => (
-    <button  className='btn' key={categoryName} onClick={() => filterByCategory(categoryName)}>
+    <Button variant=""   key={categoryName} onClick={() => filterByCategory(categoryName)}>
       {categoryName}
-    </button>
+    </Button>
   ))}
 </div>
    </div>

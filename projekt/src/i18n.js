@@ -50,6 +50,11 @@ const resources = {
      "send": "Send",
      "remove-item": "Remove item",
      "total": "Total",
+     "bestsellers": "BESTSELLERS",
+     "glasses1": "GLASSES",
+     "for-him": "FOR HIM",
+     "hats1": "HATS",
+     "for-her": "FOR HER"
     }
   },
   ee: {
@@ -97,7 +102,11 @@ const resources = {
      "send": "Saada",
      "remove-item": "Eemalda toode",
      "total": "Kokku",
-
+     "bestsellers": "POPULAARSED",
+     "glasses1": "PRILLID",
+     "for-him": "MEESTELE",
+     "hats1": "KÜBARAD",
+     "for-her": "NAISTELE"
   
 
     }

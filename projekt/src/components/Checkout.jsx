@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ParcelMachines from './components/ParcelMachines'
 import CheckoutStyle from '../../src/css/Checkout.css'
 import { Link } from 'react-router-dom';
+import {Button} from '@mui/material'
 
 function Checkout(props) {
 
@@ -72,12 +73,12 @@ function Checkout(props) {
             
             <div className='summary-total-amount'>Total: {totalWithShipping} €</div>
           </ul>
-          <button
+          <Button variant="outlined"
               className="btn btn-primary btn-lg btn-block to-payment-button"
               type="submit"
             >
               Continue to payment
-            </button>
+            </Button>
         </div>
         
         </div>
@@ -159,13 +160,13 @@ function Checkout(props) {
               </div>
             </div>
             <Link to={'/cart'}>
-            <button
+            <Button variant="outlined"
               className="btn btn-primary btn-lg btn-block back-to-cart-button"
               type="submit"
               
             >
               Back to cart
-            </button>
+            </Button>
             </Link>
           </form>
         </div>
