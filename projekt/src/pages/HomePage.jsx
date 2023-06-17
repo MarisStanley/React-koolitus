@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Button from 'react-bootstrap/esm/Button';
+
 import { Link } from 'react-router-dom';
 import config from '../../src/data/config.json'
 import { useTranslation } from 'react-i18next';
@@ -74,7 +74,7 @@ function HomePage() {
       <div className='contact-us-all'>
      <div className='contact-us-footer'>CONTACT US</div>
       <div  className='contact-footer'>
-        <div>Beverly Hills 90210</div>
+        <div>Santa Monica 90401</div>
         <div> +1 854 654 4587</div>
         <div>thebeachshop@thebeachshop.com </div>
       </div>

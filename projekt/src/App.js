@@ -1,4 +1,5 @@
 import { Route, Routes, Link } from 'react-router-dom';
+import 'leaflet/dist/leaflet.css';
 import './App.css';
 import HomePage from '../../projekt/src/pages/HomePage';
 import Contact from './pages/Contact';
@@ -11,6 +12,8 @@ import Login from './pages/Login';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+
+
 import {  useTranslation } from 'react-i18next';
 
 function App() {
@@ -71,6 +74,7 @@ function App() {
      <Route path="cart" element={ < Cart />}/> 
      <Route path="checkout" element={ < Checkout />}/>
      <Route path="login" element={ < Login />}/>
+    
      </Routes>
     </div>
   );

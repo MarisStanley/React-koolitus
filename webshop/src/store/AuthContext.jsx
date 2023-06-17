@@ -7,8 +7,12 @@ const AuthContextProvider = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(determineLoggedIn());
 
   function determineLoggedIn () {
+    // Firebase-i API paring , kas on tegemist valiidse tokeniga
+    if (sessionStorage.getItem("token")  !== null ) {
+     return true;
+    } else {
     return false;
-
+    }
   }
     
 

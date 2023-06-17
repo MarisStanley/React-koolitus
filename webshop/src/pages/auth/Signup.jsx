@@ -27,6 +27,7 @@ function Signup() {
       } else {
         setLoggedIn(true)
         navigate("/admin")
+        sessionStorage.setItem("token", json.idToken)
       }
     })
 

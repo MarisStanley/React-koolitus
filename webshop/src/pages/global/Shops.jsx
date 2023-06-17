@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Map from '../../components/Map';
 import config from "../../data/config.json"
+import { Button } from '@mui/material';
 
 function Shops() {
    const [coordinates, setCoordinates] = useState({lngLat: [58.9875, 25.5341], zoom: 7});
@@ -18,7 +19,7 @@ function Shops() {
 
   return (<div>
     
-    <div> {shop.map(item => <div key={item.name}> <button onClick={() => setCoordinates({lngLat: [item.lat, item.lng], zoom: 13} )}>{item.name}</button></div>)}
+    <div> {shop.map(item => <div key={item.name}> <Button onClick={() => setCoordinates({lngLat: [item.lat, item.lng], zoom: 13} )}>{item.name}</Button></div>)}
     
     
     {/* {lngLat: [58.9875, 25.5341], zoom: 7} */}

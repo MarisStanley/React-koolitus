@@ -60,7 +60,7 @@ function Shop() {
    
    <div >
    <nav className="filter-style">
-      <div  >
+      
           <div >
             <Button variant="" className="btn" onClick={sortAZ}>{t('sortAZ')}</Button>
           </div>
@@ -73,7 +73,7 @@ function Shop() {
           <div >
             <Button variant="" className="btn" onClick={sortPriceDesc}>{t('sortPriceDesc')}</Button>
           </div>
-      </div>
+      
     </nav>
 
     <hr class="horizontal-line"></hr>
