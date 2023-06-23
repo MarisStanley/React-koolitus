@@ -1,0 +1,19 @@
+.signup-page {
+    margin-top: 150px;
+    margin-left: 36%;
+    
+    .signup-password {
+        width: 565px; 
+    }
+    
+   
+    .signup-button {
+        margin-left: 56%;
+    }
+
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}

@@ -72,12 +72,8 @@ function HomePage() {
 
       <img className="pilt6" src="footer13.jpg" alt="" />
       <div className='contact-us-all'>
-     <div className='contact-us-footer'>CONTACT US</div>
-      <div  className='contact-footer'>
-        <div>Santa Monica 90401</div>
-        <div> +1 854 654 4587</div>
-        <div>thebeachshop@thebeachshop.com </div>
-      </div>
+    
+     
       </div>
 
     </div>

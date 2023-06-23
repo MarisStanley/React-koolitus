@@ -1,0 +1,20 @@
+.login-page {
+    margin-top: 150px;
+    margin-left: 36%;
+
+    
+    .login-password {
+        width: 565px; 
+    }
+    
+    
+    .login-button {
+        margin-left: 56%;
+    }
+
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}

@@ -54,7 +54,14 @@ const resources = {
      "glasses1": "GLASSES",
      "for-him": "FOR HIM",
      "hats1": "HATS",
-     "for-her": "FOR HER"
+     "for-her": "FOR HER",
+     "signup": "Sign up",
+     "password" : "Password",
+     "myaccount": "My account",
+     "logout": "Log out",
+     "get-in-touch": "Get in touch",
+     "name": "Name",
+     "enter-your-message-here": "Enter your message here"
     }
   },
   ee: {
@@ -96,7 +103,7 @@ const resources = {
      "there-are": "Ostukorvis on",
      "there-is": "Ostukorvis on",
      "item-in-the-cart": " toode",
-     "email": "Email",
+     "email": "E-mail",
      "phone":"Number",
      "message": "Sõnum",
      "send": "Saada",
@@ -106,9 +113,20 @@ const resources = {
      "glasses1": "PRILLID",
      "for-him": "MEESTELE",
      "hats1": "KÜBARAD",
-     "for-her": "NAISTELE"
-  
-
+     "for-her": "NAISTELE",
+     "signup": "Loo konto",
+     "password" : "Salasõna",
+     "myaccount": "Minu konto",
+     "logout": "Logi välja",
+     "get-in-touch": "Võta ühendust",
+     "name": "Nimi",
+     "enter-your-message-here": "Sõnum kirjuta siia",
+     "products": [
+      { "name": "Bikiini" },
+      { "name": "Müts" },
+      { "name": "Prillid" }
+    ]
+    
     }
   }
 };

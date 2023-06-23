@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react'
 import Map from '../components/Map'
 import { Button } from '@mui/material'
-import ContactUs from '../../src/css/Contact.css'
+import '../../src/css/Contact.css';
 import emailjs from '@emailjs/browser';
+import { t } from 'i18next';
 
 
 
@@ -20,6 +21,8 @@ function Contact() {
       }, (error) => {
         console.log(error.text);
       });
+
+      form.current.value = "";
   };
 
 
@@ -31,6 +34,8 @@ function Contact() {
       phone: Number('18546544587'),
       email: "thebeachshop@thebeachshop.com"
     }]
+
+
 
   const [shop, setShop] = useState(shopLocation)
 
@@ -64,7 +69,7 @@ function Contact() {
         <Map mapCoordinates={coordinates} />
 
         <div className='contact-address'>
-          <div>Santa Monica 90401</div>
+          <div>Santa Monica, 90401</div>
           <div> +1 854 654 4587</div>
           <div>thebeachshop@thebeachshop.com </div>
         </div>
@@ -72,19 +77,19 @@ function Contact() {
         <br />
         <div className='contact-us'>
           <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-muted">Get in touch</span>
+            <span className="text-muted">{t('get-in-touch')}</span>
 
           </h4>
           <div className="col-md-8 order-md-1   " >
-            <form className="needs-validation" noValidate>
+            <form className="needs-validation" noValidate    ref={form} onSubmit={sendEmail}>
               <div className="row">
                 <div className="col-md-6 mb-5 ">
-                  <label htmlFor="firstName">Name</label>
+                  <label htmlFor="name">{t('name')}</label>
                   <input
                     name="from_name"
                     type="text"
                     className="form-control contact-name"
-                    id="firstName"
+                    id="name"
                     placeholder=""
                     required
                   ></input>
@@ -92,7 +97,7 @@ function Contact() {
                 </div>
                 <div className="mb-7">
                   <label htmlFor="email">
-                    <div className='contact-email'  >Email</div>
+                    <div className='contact-email'  >{t('email')}</div>
                   </label>
                   <input
                     name="from_email"
@@ -103,17 +108,17 @@ function Contact() {
                     required
                   ></input>
                   <div className="invalid-feedback">
-                    Please enter a valid email address for shipping updates.
+                    Please enter a valid email.
                   </div>
                 </div>
                 <div className="col-md-6 mb-5">
-                  <label className='contact-message' htmlFor="message">Message</label>
+                  <label className='contact-message' htmlFor="message">{t('message')}</label>
                   <textarea
                     name="message"
                     type="text"
                     className="form-control  message"
                     id="fixed"
-                    placeholder="Enter your message here"
+                    placeholder={t('enter-your-message-here')}
                     required
                   ></textarea>
                   <div className="invalid-feedback">Cannot send an empty message.</div>
@@ -122,11 +127,12 @@ function Contact() {
 
               <div className='contact-button'>
                 <Button
+                 
                   type="submit"
                   variant="outlined"
                   className="btn btn-primary btn-lg btn-block type=submit "
-                  ref={form} onSubmit={sendEmail} >
-                  Send
+                  >
+                  {t('send')}
                 </Button>
               </div>
             </form>

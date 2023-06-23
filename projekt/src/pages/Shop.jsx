@@ -1,32 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import config from '../../src/data/config.json'
+
+
 import "../../src/css/Shop.css"
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {Button} from '@mui/material';
 
 
+
+
 function Shop() {
   const [products, setProducts] = useState([]);
-  const { t } = useTranslation();
+  const { t,  } = useTranslation();
   const [categories, setCategories] = useState([])
   const [dbProducts, setDbProducts] =useState([])
   
 
   useEffect(() => {
+    
 
     fetch(config.productsDbUrl)
-      .then(res => res.json())
-      .then(json => { 
+      .then((res) => res.json())
+      .then((json) => {
         setProducts(json || []);
         setDbProducts(json || []);
-       
       });
 
     fetch(config.productsDbUrl)
-      .then(res => res.json())
-      .then(json => setCategories(json || []));
+      .then((res) => res.json())
+      .then((json) => setCategories(json || []));
   }, []);
+
+  
 
   const sortAZ = () => {
     products.sort((a, b) => a.name.localeCompare(b.name));
