@@ -1,15 +1,16 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
+import Button from 'react-bootstrap/esm/Button';
 
 
 function SortButtons(props) {
   const { t } = useTranslation();
   return (
     <div>
-      <button onClick={props.sortAZ}>{t('sortAZ')}</button>
-      <button onClick={props.sortZA}>{t('sortZA')}</button>
-      <button onClick={props.sortPriceAsc}>{t('sortPriceAsc')}</button>
-      <button onClick={props.sortPriceDesc}>{t('sortPriceDesc')}</button>
+      <Button onClick={props.sortAZ}>{t('sortAZ')}</Button>
+      <Button onClick={props.sortZA}>{t('sortZA')}</Button>
+      <Button onClick={props.sortPriceAsc}>{t('sortPriceAsc')}</Button>
+      <Button onClick={props.sortPriceDesc}>{t('sortPriceDesc')}</Button>
     </div>
   )
 }

@@ -6,12 +6,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { CartSumContext  } from '../store/CartSumContext'
 import { AuthContext } from '../store/AuthContext';
+import { useNavigate } from 'react-router-dom'
+
 
 
 function NavigationBar() {
     const { t, i18n } = useTranslation();
     const { cartSum } = useContext(CartSumContext)
     const {loggedIn, setLoggedIn} = useContext(AuthContext);
+    const navigate = useNavigate()
     
 
     const languageTo = (languageClicked) => {
@@ -29,6 +32,8 @@ function NavigationBar() {
 
       const logout= () => {
         setLoggedIn(false);
+        sessionStorage.removeItem("token")
+        navigate("/")
       }
   return (
     
@@ -43,9 +48,12 @@ function NavigationBar() {
             <Nav.Link as={Link}  to="/shops">{t("shops")}</Nav.Link>
           </Nav>
           <Nav>
+            { loggedIn === false && 
+            <>
              <Nav.Link as={Link}  to="/login">Log in</Nav.Link>
              <Nav.Link as={Link}  to="/signup">Sign up</Nav.Link>
-            <button   onClick={logout}>Log out</button>
+             </>}
+            {loggedIn === true && <button   onClick={logout}>Log out</button>}
             <div>{cartSum} €</div>
             {/* <img className='lang' src="/english.png" onClick={languageToEn} alt="" />
             <img className='lang' src="/estonia.png" onClick={languageToEe} alt="" />

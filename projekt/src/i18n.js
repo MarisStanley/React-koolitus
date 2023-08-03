@@ -61,7 +61,8 @@ const resources = {
      "logout": "Log out",
      "get-in-touch": "Get in touch",
      "name": "Name",
-     "enter-your-message-here": "Enter your message here"
+     "enter-your-message-here": "Enter your message here",
+     "page-not-found": "404- Page not found!"
     }
   },
   ee: {
@@ -121,11 +122,10 @@ const resources = {
      "get-in-touch": "Võta ühendust",
      "name": "Nimi",
      "enter-your-message-here": "Sõnum kirjuta siia",
-     "products": [
-      { "name": "Bikiini" },
-      { "name": "Müts" },
-      { "name": "Prillid" }
-    ]
+     "page-not-found": "404-lehte ei leitud!",
+     "White": "valge",
+     "test": "Lorem  <br /> <br />ipsum"
+
     
     }
   }

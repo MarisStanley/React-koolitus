@@ -33,9 +33,9 @@ function ParcelMachines() {
 
 
             <select className="search-input">
-            {searchedRef.current && searchedRef.current.value === "" && (
-          <option   value="" required>Select the parcel machine</option>
-        )}
+                {searchedRef.current && searchedRef.current.value === "" && (
+                    <option value="" required>Select the parcel machine</option>
+                )}
 
                 {parcelMachines
 
@@ -46,8 +46,8 @@ function ParcelMachines() {
             </select>
             <br />
             <div>
-                <input  type="text" ref={searchedRef} onChange={searchFromPMs} placeholder="Search" />
-                <div class="invalid-feedback">
+                <input type="text" ref={searchedRef} onChange={searchFromPMs} placeholder="Search" />
+                <div className="invalid-feedback">
                     Please choose the parcel machine.
                 </div>
             </div>

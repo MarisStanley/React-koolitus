@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
+
 function Signup() {
   const { setLoggedIn } = useContext(AuthContext);
   const emailRef = useRef();

@@ -48,3 +48,22 @@
     width: 200px;
     height: 150px;
 }
+
+@media only screen and (max-width: 600px) {  
+    /* //alla 600px css muutub */
+    body {
+      background-color: lightblue;
+    }
+    .image {
+        width: 75px;
+        height: 75px;
+    }
+
+    .product {
+       
+        margin: 0 3%;
+      
+    
+    }
+
+  }

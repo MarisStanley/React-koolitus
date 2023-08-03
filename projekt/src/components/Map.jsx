@@ -1,11 +1,10 @@
 
-
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import ChangeView from './ChangeView';
-import { useEffect, useState } from 'react';
+
 let DefaultIcon = L.icon({
   iconUrl: icon,
   shadowUrl: iconShadow,
@@ -17,10 +16,6 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 function Map(props) {
  
-
-
-  
-
   return (
   <div>
   

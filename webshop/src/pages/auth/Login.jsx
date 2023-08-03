@@ -3,10 +3,10 @@ import { useContext } from 'react';
 import { AuthContext } from '../../store/AuthContext';
 import { useRef } from 'react';
 import { useState } from 'react';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
-  const {setLoggedIn} = useContext(AuthContext);
+  const { setLoggedIn } = useContext(AuthContext);
   const emailRef = useRef();
   const passwordRef = useRef();
   const [message, setMessage] = useState("");
@@ -20,18 +20,19 @@ function Login() {
       "password": passwordRef.current.value,
       "returnSecureToken": true
     }
-    fetch(url, {"method": "POST", "body": JSON.stringify(payload)})
-    .then(res => res.json())
-    .then(json=> {
-      if (json.error) {
-        setMessage(json.error.message)
-      } else {
-        setLoggedIn(true)
-        navigate("/admin")
-      }
-    })
+    fetch(url, { "method": "POST", "body": JSON.stringify(payload) })
+      .then(res => res.json())
+      .then(json => {
+        if (json.error) {
+          setMessage(json.error.message)
+        } else {
+          setLoggedIn(true)
+          navigate("/admin")
+          sessionStorage.setItem("token", json.idToken)
+        }
+      })
 
-}
+  }
 
   return (
     <div>

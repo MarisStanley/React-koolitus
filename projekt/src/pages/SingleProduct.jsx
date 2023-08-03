@@ -10,15 +10,10 @@ function SingleProduct() {
     const [products, setProducts] = useState([]);
     const { id } = useParams();
     const result = products.find((el) => el.id === Number(id));
-
     const [size, setSize] = useState('');
-
     const sizeRef = useRef([]);
 
-
-
     useEffect(() => {
-
         fetch(config.productsDbUrl)
             .then(res => res.json())
             .then(json => setProducts(json || []));
@@ -31,16 +26,16 @@ function SingleProduct() {
     const addToCart = (productClicked) => {
         const cartLS = JSON.parse(localStorage.getItem("cart1")) || [];
         const index = cartLS.findIndex(element => element.product.id === productClicked.id && element.product.size === size);
-      
+
         if (index >= 0) {
-          cartLS[index].quantity++;
+            cartLS[index].quantity++;
         } else {
-          cartLS.push({ "product": { ...productClicked, size: size }, "quantity": 1 });
+            cartLS.push({ "product": { ...productClicked, size: size }, "quantity": 1 });
         }
-      
+
         localStorage.setItem("cart1", JSON.stringify(cartLS));
-      };
-      
+    };
+
 
 
     // const addToCart = (productClicked) => {
@@ -74,18 +69,15 @@ function SingleProduct() {
     return (
         <div className='background'>
             <div className='details'>
-
                 <Link className="link-black" to="/shop">{t('shop')}</Link>
-
                 <div className='product-name'> {result.name}</div>
                 <div>{t('product-id')}: {id}</div>
-
                 <div className='product-description'>{result.description}</div>
                 <div className='product-price'>{t('price')}:  {result.price}€</div> <br />
                 <div className='tables'>
                     <label className='text' htmlFor="">{t('size')}: </label>
                     <select className='select' value={size} onChange={(e) => setSize(e.target.value)}>
-                        <option  value="">{t('select-size')}</option>
+                        <option value="">{t('select-size')}</option>
                         {availableSizes.map((size, index) => (
                             <option key={index} value={size} defaultValue={size === result.size}>
                                 {size}
@@ -110,7 +102,8 @@ function SingleProduct() {
             <div className='product-image'>
                 <img className='product-img' src={process.env.PUBLIC_URL + "/" + result.image} alt="" /></div>
 
-
+            {/* <div dangerouslySetInnerHTML={{ __html: t('test') }}>
+            </div> */}
 
         </div>
     )

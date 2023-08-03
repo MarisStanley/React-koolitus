@@ -5,6 +5,8 @@ import styles from "../../css/HomePage.module.css"
 import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { CartSumContext } from '../../store/CartSumContext';
+import {Button} from '@mui/material';
+
 
 function Product({ product }) {
   const { t } = useTranslation();
@@ -43,7 +45,8 @@ function Product({ product }) {
         <div className={styles.name}>{product.name}</div>
         <div>{product.price}</div>
       </Link>
-      <button onClick={() => addToCart(product)}>{t('add-to-cart')}</button>
+      
+      <Button variant="text" onClick={() => addToCart(product)}>{t('add-to-cart')}</Button>
     </div>
   )
 }

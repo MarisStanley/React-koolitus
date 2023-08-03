@@ -7,8 +7,6 @@ import { t } from 'i18next';
 
 
 
-
-
 function Contact() {
   const form = useRef();
 
@@ -22,7 +20,7 @@ function Contact() {
         console.log(error.text);
       });
 
-      form.current.value = "";
+    form.current.value = "";
   };
 
 
@@ -35,18 +33,12 @@ function Contact() {
       email: "thebeachshop@thebeachshop.com"
     }]
 
-
-
   const [shop, setShop] = useState(shopLocation)
 
   const [coordinates, setCoordinates] = useState({
     lngLat: [34.0088, -118.4941],
     zoom: 8
   });
-
-
-
-
 
 
   const showShop = () => {
@@ -56,32 +48,23 @@ function Contact() {
   }
 
 
-
-
   return (
 
     <div>
-
-
       <div > {shop.map(item => <div className='map-button' key={item.name}> <Button variant="outlined" onClick={() => showShop()}>{item.name}</Button> </div>)}
-
-
         <Map mapCoordinates={coordinates} />
-
         <div className='contact-address'>
           <div>Santa Monica, 90401</div>
           <div> +1 854 654 4587</div>
           <div>thebeachshop@thebeachshop.com </div>
         </div>
-
         <br />
         <div className='contact-us'>
           <h4 className="d-flex justify-content-between align-items-center mb-3">
             <span className="text-muted">{t('get-in-touch')}</span>
-
           </h4>
           <div className="col-md-8 order-md-1   " >
-            <form className="needs-validation" noValidate    ref={form} onSubmit={sendEmail}>
+            <form className="needs-validation" noValidate ref={form} onSubmit={sendEmail}>
               <div className="row">
                 <div className="col-md-6 mb-5 ">
                   <label htmlFor="name">{t('name')}</label>
@@ -124,29 +107,22 @@ function Contact() {
                   <div className="invalid-feedback">Cannot send an empty message.</div>
                 </div>
               </div>
-
               <div className='contact-button'>
                 <Button
-                 
                   type="submit"
                   variant="outlined"
                   className="btn btn-primary btn-lg btn-block type=submit "
-                  >
+                >
                   {t('send')}
                 </Button>
               </div>
             </form>
           </div>
-
         </div>
       </div>
       <div>
       </div>
-
     </div>
-
-
-
 
   )
 }

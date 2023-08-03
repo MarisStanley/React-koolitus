@@ -30,7 +30,7 @@ function Login() {
           setMessage(json.error.message)
         } else {
           setLoggedIn(true)
-          navigate("/myaccount")
+          navigate("/shop")
           sessionStorage.setItem("token", json.idToken)
         }
       })
@@ -46,7 +46,6 @@ function Login() {
         <div className="col-md-8 order-md-1   " >
           <form className="needs-validation" noValidate    >
             <div className="row">
-
               <div className="mb-7">
                 <label htmlFor="email">
                   <div className='contact-email'  >{t('email')}</div>
@@ -59,7 +58,6 @@ function Login() {
                   placeholder=""
                   required
                 ></input>
-               
               </div>
               <div className="col-md-6 mb-5 ">
                 <label htmlFor="password">{t('password')}</label>
@@ -71,12 +69,11 @@ function Login() {
                   placeholder=""
                   required
                 ></input>
-              <br />
+                <br />
                 <div className='error-message'>{message}</div>
               </div>
             </div>
-
-            <div  className='login-button'  >
+            <div className='login-button'  >
               <Button
                 onClick={login}
                 type="button"

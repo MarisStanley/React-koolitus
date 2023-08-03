@@ -16,7 +16,6 @@ import Product from '../../components/home/Product';
 function HomePage() {
   const [products, setProducts] = useState([]);
   const [dbProducts, setDbProducts] =useState([])
-  
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
   

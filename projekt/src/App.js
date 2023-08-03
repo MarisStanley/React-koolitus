@@ -11,59 +11,46 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import LogOut from './pages/LogOut';
 import MyAccount from './pages/MyAccount';
+import NotFound from './pages/NotFound';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import { AuthContext } from '../../projekt/src/pages/AuthContext';
 import { useNavigate } from 'react-router-dom'
-import config from '../../projekt/src/data/config.json'
-
-
 import { useTranslation } from 'react-i18next';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { CartSumContext } from './pages/CartSumContext';
 
 function App() {
   const { t, i18n } = useTranslation();
   const { loggedIn, setLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate()
-  const [translation, setTranslation] = useState("ee")
+  const { cartSum } = useContext(CartSumContext)
 
   const logout = () => {
     setLoggedIn(false);
     sessionStorage.removeItem("token")
     navigate("/")
   }
-  
-  
-  
+
   const languageTo = (languageClicked) => {
     i18n.changeLanguage(languageClicked);
     localStorage.setItem("language", languageClicked);
-    
   };
 
-  const languageTranslation = () => {
-    fetch(config.translationDbUrl)
-      .then(res => res.json())
-      .then(json => setTranslation(json || []));
-  }
-
-  
 
 
   return (
     <div className="App">
       <Navbar collapseOnSelect expand="lg" bg="f000000" variant="light">
         <Container>
-
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-
             <Nav className="me-auto">
               <Nav.Link as={Link} to="">{t('home')}</Nav.Link>
               <Nav.Link as={Link} to="/shop">{t('shop')}</Nav.Link>
               <Nav.Link as={Link} to="/contact">{t('contact')}</Nav.Link>
-
+              
             </Nav>
             <Nav>
               {loggedIn === false &&
@@ -74,29 +61,22 @@ function App() {
               {loggedIn === true &&
                 <>
                   <Nav.Link as={Link} to="/myaccount">{t('myaccount')}</Nav.Link>
-                  <Nav.Link as={Link} to="/logout" onClick={logout}>{t('logout')}</Nav.Link>
+                  <Nav.Link as={Link} to="/" onClick={logout}>{t('logout')}</Nav.Link>
                 </>}
               <Nav.Link as={Link} to="/cart">{t('cart')}</Nav.Link>
-
+              <div>{cartSum} €</div>
+              
               <Nav.Link className='lang-button-1' onClick={() => languageTo("en")}>  ENG</Nav.Link>
               <Nav.Link className='lang-button'> /</Nav.Link>
-              
-          <Nav.Link className="lang-button" onClick={() => languageTo('ee')}>
-            EST
-          </Nav.Link>
-        
+              <Nav.Link className="lang-button" onClick={() => languageTo('ee')}>
+                EST
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <Navbar.Brand as={Link} to="" > <img className="logo" src="THE4.png" alt="" />
-
           </Navbar.Brand>
-
         </Container>
       </Navbar>
-
-
-
-
 
 
 
@@ -110,7 +90,11 @@ function App() {
         <Route path="login" element={< Login />} />
         <Route path="signup" element={< SignUp />} />
         <Route path="logout" element={< LogOut />} />
+        { loggedIn === true &&   <>
         <Route path="myaccount" element={< MyAccount />} />
+        </>}
+        <Route path="*"   element={ <NotFound /> } />
+
 
       </Routes>
     </div>

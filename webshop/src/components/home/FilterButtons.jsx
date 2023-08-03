@@ -1,4 +1,5 @@
 import React from 'react'
+import {Button} from '@mui/material';
 
 function FilterButtons(props) {
     const filterByCategory = (categoryClicked) => {
@@ -8,8 +9,8 @@ function FilterButtons(props) {
   return (
     <div>
          {props.categories.map(category =>
-        <button key={category.name} onClick={() => filterByCategory(category.name)}>
-          {category.name}</button>
+        <Button variant="outlined" key={category.name} onClick={() => filterByCategory(category.name)}>
+          {category.name}</Button>
       )}
     </div>
   )
